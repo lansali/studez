@@ -1,24 +1,8 @@
-# README
+# Studez
+Connections for students in higher learning
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## Author
+Sylvance Kerandi
 
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+## Acknowldegements
+- https://medium.com/forest-admin/rails-migrations-tricks-guide-code-cheatsheet-included-dca935354f22
