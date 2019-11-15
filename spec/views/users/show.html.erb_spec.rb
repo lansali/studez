@@ -4,7 +4,7 @@ RSpec.describe "users/show", type: :view do
   before(:each) do
     @user = assign(:user, User.create!(
       :email => "Email",
-      :password => "Password",
+      :password => "",
       :first_name => "First Name",
       :middle_name => "Middle Name",
       :last_name => "Last Name",
@@ -13,14 +13,14 @@ RSpec.describe "users/show", type: :view do
       :course_name => "Course Name",
       :year_started_course => "9.99",
       :expected_graduation_year => "9.99",
-      :interests => ""
+      :interests => "MyText"
     ))
   end
 
   it "renders attributes in <p>" do
     render
     expect(rendered).to match(/Email/)
-    expect(rendered).to match(/Password/)
+    expect(rendered).to match(//)
     expect(rendered).to match(/First Name/)
     expect(rendered).to match(/Middle Name/)
     expect(rendered).to match(/Last Name/)
@@ -29,6 +29,6 @@ RSpec.describe "users/show", type: :view do
     expect(rendered).to match(/Course Name/)
     expect(rendered).to match(/9.99/)
     expect(rendered).to match(/9.99/)
-    expect(rendered).to match(//)
+    expect(rendered).to match(/MyText/)
   end
 end

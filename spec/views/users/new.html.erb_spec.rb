@@ -4,7 +4,7 @@ RSpec.describe "users/new", type: :view do
   before(:each) do
     assign(:user, User.new(
       :email => "MyString",
-      :password => "MyString",
+      :password => "",
       :first_name => "MyString",
       :middle_name => "MyString",
       :last_name => "MyString",
@@ -13,7 +13,7 @@ RSpec.describe "users/new", type: :view do
       :course_name => "MyString",
       :year_started_course => "9.99",
       :expected_graduation_year => "9.99",
-      :interests => ""
+      :interests => "MyText"
     ))
   end
 
@@ -42,7 +42,7 @@ RSpec.describe "users/new", type: :view do
 
       assert_select "input[name=?]", "user[expected_graduation_year]"
 
-      assert_select "input[name=?]", "user[interests]"
+      assert_select "textarea[name=?]", "user[interests]"
     end
   end
 end

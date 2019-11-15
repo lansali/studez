@@ -18,7 +18,12 @@
 
   <div class="field">
     <%= form.label :password %>
-    <%= form.text_field :password %>
+    <%= form.password_field :password %>
+  </div>
+
+  <div class="field">
+    <%= form.label :password_confirmation %>
+    <%= form.password_field :password_confirmation %>
   </div>
 
   <div class="field">
@@ -63,7 +68,7 @@
 
   <div class="field">
     <%= form.label :interests %>
-    <%= form.text_field :interests %>
+    <%= form.text_area :interests %>
   </div>
 
   <div class="actions">
