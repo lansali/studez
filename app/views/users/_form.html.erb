@@ -1,4 +1,4 @@
-<%= form_with(model: user, local: true) do |form| %>
+<%= form_with(model: user, class: 'form-sessions', local: true) do |form| %>
   <% if user.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(user.errors.count, "error") %> prohibited this user from being saved:</h2>
@@ -10,68 +10,96 @@
       </ul>
     </div>
   <% end %>
+  <img class="mb-4" src="https://getbootstrap.com/docs/4.3/assets/brand/bootstrap-solid.svg" alt="" width="72" height="72">
+  <h1 class="h3 mb-3 font-weight-normal">Enter your details</h1>
+  <p id="notice"><%= notice %></p>
 
   <div class="field">
     <%= form.label :email %>
-    <%= form.text_field :email %>
+    <%= form.text_field :email, class: 'form-control', placeholder: 'Email' %>
   </div>
 
-  <div class="field">
-    <%= form.label :password %>
-    <%= form.password_field :password %>
+  <div class="row">
+    <div class="col">
+      <div class="field">
+        <%= form.label :password %>
+        <%= form.password_field :password, class: 'form-control', placeholder: 'Password' %>
+      </div>
+    </div>
+    
+    <div class="col">
+      <div class="field">
+        <%= form.label :password_confirmation %>
+        <%= form.password_field :password_confirmation, class: 'form-control', placeholder: 'Confirm password' %>
+      </div>
+    </div>
   </div>
 
-  <div class="field">
-    <%= form.label :password_confirmation %>
-    <%= form.password_field :password_confirmation %>
+  <div class="row">
+    <div class="col">
+      <div class="field">
+        <%= form.label :first_name %>
+        <%= form.text_field :first_name, class: 'form-control', placeholder: 'First name' %>
+      </div>
+    </div>
+
+    <div class="col">
+      <div class="field">
+        <%= form.label :middle_name %>
+        <%= form.text_field :middle_name, class: 'form-control', placeholder: 'Middle name' %>
+      </div>
+    </div>
   </div>
 
-  <div class="field">
-    <%= form.label :first_name %>
-    <%= form.text_field :first_name %>
-  </div>
+  <div class="row">
+    <div class="col">
+      <div class="field">
+        <%= form.label :last_name %>
+        <%= form.text_field :last_name, class: 'form-control', placeholder: 'Last name' %>
+      </div>
+    </div>
 
-  <div class="field">
-    <%= form.label :middle_name %>
-    <%= form.text_field :middle_name %>
-  </div>
-
-  <div class="field">
-    <%= form.label :last_name %>
-    <%= form.text_field :last_name %>
+    <div class="col">
+      <div class="field" style="margin-bottom: 1em">
+        <%= form.label :interests %>
+        <%= form.text_area(:interests, class: 'form-control') %>
+      </div>
+    </div>
   </div>
 
   <div class="field">
     <%= form.label :institution_name %>
-    <%= form.text_field :institution_name %>
+    <%= form.text_field :institution_name, class: 'form-control', placeholder: 'Institution' %>
   </div>
 
   <div class="field">
     <%= form.label :bio %>
-    <%= form.text_area :bio %>
+    <%= form.text_area(:bio, class: 'form-control') %>
   </div>
 
-  <div class="field">
-    <%= form.label :course_name %>
-    <%= form.text_field :course_name %>
-  </div>
+  <div class="row">
+    <div class="col">
+      <div class="field">
+        <%= form.label :course_name %>
+        <%= form.text_field :course_name, class: 'form-control', placeholder: 'Course name' %>
+      </div>
+    </div>
 
-  <div class="field">
-    <%= form.label :year_started_course %>
-    <%= form.text_field :year_started_course %>
+    <div class="col">
+      <div class="field">
+        <%= form.label :year_started_course %>
+        <%= form.text_field :year_started_course, class: 'form-control', placeholder: 'Course started year' %>
+      </div>
+    </div>
   </div>
 
   <div class="field">
     <%= form.label :expected_graduation_year %>
-    <%= form.text_field :expected_graduation_year %>
+    <%= form.text_field :expected_graduation_year, class: 'form-control', placeholder: 'Expected graduation year' %>
   </div>
-
-  <div class="field">
-    <%= form.label :interests %>
-    <%= form.text_area :interests %>
-  </div>
+  <br/>
 
   <div class="actions">
-    <%= form.submit %>
+    <%= form.submit 'Register', class: "btn btn-lg btn-success btn-block" %>
   </div>
 <% end %>
