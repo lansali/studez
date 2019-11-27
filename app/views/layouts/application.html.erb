@@ -22,21 +22,21 @@
           <li class="nav-item active">
             <%= link_to "Home", root_path, class: "nav-link"%>
           </li>
-          <li class="nav-item">
-            <%= link_to "Explore users", users_path, class: "nav-link" %>
-          </li>
-          <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              Categories
-            </a>
-            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-              <a class="dropdown-item" href="#">Action</a>
-              <a class="dropdown-item" href="#">Another action</a>
-              <div class="dropdown-divider"></div>
-              <a class="dropdown-item" href="#">Something else here</a>
-            </div>
-          </li>
           <% if current_user %>
+            <li class="nav-item">
+              <%= link_to "Explore student profiles", users_path, class: "nav-link" %>
+            </li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Opportunities
+              </a>
+              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <%= link_to "All opportunities", opportunities_path, class: "dropdown-item" %>
+                <%= link_to "Post opportunity", new_opportunity_path, class: "dropdown-item" %>
+                <div class="dropdown-divider"></div>
+                <%= link_to "Recent opportunities", opportunities_path, class: "dropdown-item" %>
+              </div>
+            </li>
             <li class="nav-item">
               <%= link_to current_user.first_name, current_user, class: "nav-link" %>
             </li>

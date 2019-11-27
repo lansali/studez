@@ -1,0 +1,56 @@
+<%= form_with(model: opportunity, class: 'form-sessions', local: true) do |form| %>
+  <% if opportunity.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(opportunity.errors.count, "error") %> prohibited this opportunity from being saved:</h2>
+
+      <ul>
+        <% opportunity.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <h1 class="h3 mb-3 font-weight-normal">Post Opportunity</h1>
+  <p id="notice"><%= notice %></p>
+
+  <div class="field">
+    <%= form.label :name %>
+    <%= form.text_field :name, class: 'form-control', placeholder: 'Name' %>
+  </div>
+
+  <div class="field">
+    <%= form.label :author_id %>
+    <%= form.text_field :author_id, class: 'form-control', placeholder: 'Author id' %>
+  </div>
+
+  <div class="field">
+    <%= form.label :description %>
+    <%= form.text_area :description, class: 'form-control', placeholder: 'Description' %>
+  </div>
+
+  <div class="field">
+    <%= form.label :requirements %>
+    <%= form.text_area :requirements, class: 'form-control', placeholder: 'Requirements' %>
+  </div>
+
+  <div class="field">
+    <%= form.label :other %>
+    <%= form.text_area :other, class: 'form-control', placeholder: 'Others' %>
+  </div>
+
+  <div>
+    <%= form.label :deadline %>
+    <br/>
+    <%= form.date_select :deadline, class: 'form-control', placeholder: 'Deadline' %>
+  </div>
+
+  <div class="field">
+    <%= form.label :category %>
+    <%= form.text_field :category, class: 'form-control', placeholder: 'Category' %>
+  </div>
+  <br/>
+
+  <div class="actions">
+    <%= form.submit 'Post opportunity', class: "btn btn-lg btn-success btn-block" %>
+  </div>
+<% end %>

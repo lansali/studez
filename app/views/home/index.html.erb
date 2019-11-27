@@ -1,27 +1,11 @@
 
 <div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column">
-  <header class="masthead mb-auto">
-    <div class="inner">
-      <h3 class="masthead-brand">Studez</h3>
-      <nav class="nav nav-masthead justify-content-center">
-        <a class="nav-link active color-blue" href="#">Home </a>
-        <a class="nav-link color-blue" href="#">Features </a>
-        <% if current_user %>
-          <a class="nav-link color-blue" href="#"><%= current_user.first_name %> </a>
-          <%= link_to "Log Out", logout_path, class: "nav-link color-blue" %>
-        <% else %>
-          <%= link_to "Sign Up", signup_path, class: "nav-link color-blue" %>
-          <%= link_to "Log In", login_path, class: "nav-link color-blue" %>
-        <% end %>
-      </nav>
-    </div>
-  </header>
-
   <main role="main" class="inner cover">
-    <h1 class="cover-heading">Cover your page.</h1>
-    <p class="lead">Cover is a one-page template for building simple and beautiful home pages. Download, edit the text, and add your own fullscreen background photo to make it your own.</p>
+    <h1 class="cover-heading">Welcome to Studez.</h1>
+    <p class="lead">Studez is an online platform where students get to find job and internship opportunities available for their student type portfolio.</p>
     <p class="lead">
-      <a href="#" class="btn btn-lg btn-secondary">Learn more</a>
+      <%= link_to "Log In ", login_path, class: "btn btn-lg btn-success" %>
+      <%= link_to "Sign up", signup_path, class: "btn btn-lg btn-primary" %>
       <p id="notice"><%= notice %></p>
     </p>
   </main>
