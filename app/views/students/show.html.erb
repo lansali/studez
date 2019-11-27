@@ -1,0 +1,39 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>User:</strong>
+  <%= @student.user_id %>
+</p>
+
+<p>
+  <strong>Institution name:</strong>
+  <%= @student.institution_name %>
+</p>
+
+<p>
+  <strong>Bio:</strong>
+  <%= @student.bio %>
+</p>
+
+<p>
+  <strong>Course name:</strong>
+  <%= @student.course_name %>
+</p>
+
+<p>
+  <strong>Year started course:</strong>
+  <%= @student.year_started_course %>
+</p>
+
+<p>
+  <strong>Expected graduation year:</strong>
+  <%= @student.expected_graduation_year %>
+</p>
+
+<p>
+  <strong>Interests:</strong>
+  <%= @student.interests %>
+</p>
+
+<%= link_to 'Edit', edit_student_path(@student) %> |
+<%= link_to 'Back', students_path %>

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_11_27_135103) do
+ActiveRecord::Schema.define(version: 2019_11_27_134205) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -46,9 +46,39 @@ ActiveRecord::Schema.define(version: 2019_11_27_135103) do
     t.index ["key"], name: "index_active_storage_blobs_on_key", unique: true
   end
 
+  create_table "businesses", force: :cascade do |t|
+    t.bigint "employer_id", null: false
+    t.string "logo"
+    t.text "description"
+    t.string "location"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["employer_id"], name: "index_businesses_on_employer_id"
+  end
+
+  create_table "comments", force: :cascade do |t|
+    t.bigint "post_id", null: false
+    t.bigint "user_id", null: false
+    t.text "comment"
+    t.decimal "flagged"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["post_id"], name: "index_comments_on_post_id"
+    t.index ["user_id"], name: "index_comments_on_user_id"
+  end
+
+  create_table "employers", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.string "title"
+    t.text "bio"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["user_id"], name: "index_employers_on_user_id"
+  end
+
   create_table "opportunities", force: :cascade do |t|
     t.string "name"
-    t.bigint "author_id", null: false
+    t.bigint "business_id", null: false
     t.text "description"
     t.text "requirements"
     t.text "other"
@@ -56,7 +86,7 @@ ActiveRecord::Schema.define(version: 2019_11_27_135103) do
     t.string "category"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["author_id"], name: "index_opportunities_on_author_id"
+    t.index ["business_id"], name: "index_opportunities_on_business_id"
   end
 
   create_table "posts", force: :cascade do |t|
@@ -67,24 +97,54 @@ ActiveRecord::Schema.define(version: 2019_11_27_135103) do
     t.index ["author_id"], name: "index_posts_on_author_id"
   end
 
-  create_table "users", force: :cascade do |t|
-    t.string "email"
-    t.string "password_digest"
-    t.string "first_name"
-    t.string "middle_name"
-    t.string "last_name"
+  create_table "students", force: :cascade do |t|
+    t.bigint "user_id", null: false
     t.string "institution_name"
     t.text "bio"
     t.string "course_name"
-    t.decimal "year_started_course"
-    t.decimal "expected_graduation_year"
+    t.date "year_started_course"
+    t.date "expected_graduation_year"
     t.text "interests"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["email"], name: "index_users_on_email", unique: true
+    t.index ["user_id"], name: "index_students_on_user_id"
+  end
+
+  create_table "submissions", force: :cascade do |t|
+    t.bigint "opportunity_id", null: false
+    t.bigint "student_id", null: false
+    t.string "cover_letter"
+    t.string "cv"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["opportunity_id"], name: "index_submissions_on_opportunity_id"
+    t.index ["student_id"], name: "index_submissions_on_student_id"
+  end
+
+  create_table "users", force: :cascade do |t|
+    t.string "email"
+    t.string "password_digest"
+    t.string "username"
+    t.string "first_name"
+    t.string "middle_name"
+    t.string "last_name"
+    t.boolean "admin"
+    t.boolean "moderator"
+    t.boolean "employer"
+    t.boolean "student"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["email", "username"], name: "index_users_on_email_and_username", unique: true
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
-  add_foreign_key "opportunities", "users", column: "author_id"
+  add_foreign_key "businesses", "employers"
+  add_foreign_key "comments", "posts"
+  add_foreign_key "comments", "users"
+  add_foreign_key "employers", "users"
+  add_foreign_key "opportunities", "businesses"
   add_foreign_key "posts", "users", column: "author_id"
+  add_foreign_key "students", "users"
+  add_foreign_key "submissions", "opportunities"
+  add_foreign_key "submissions", "students"
 end

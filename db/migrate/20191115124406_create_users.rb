@@ -3,18 +3,17 @@ class CreateUsers < ActiveRecord::Migration[6.0]
     create_table :users do |t|
       t.string :email
       t.string :password_digest
+      t.string :username
       t.string :first_name
       t.string :middle_name
       t.string :last_name
-      t.string :institution_name
-      t.text :bio
-      t.string :course_name
-      t.decimal :year_started_course
-      t.decimal :expected_graduation_year
-      t.text :interests
+      t.boolean :admin
+      t.boolean :moderator
+      t.boolean :employer
+      t.boolean :student
 
       t.timestamps
     end
-    add_index :users, :email, unique: true
+    add_index :users, [:email, :username], unique: true
   end
 end

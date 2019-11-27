@@ -1,0 +1,65 @@
+<%= form_with(model: student, class: 'form-sessions', local: true) do |form| %>
+  <% if student.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(student.errors.count, "error") %> prohibited this student from being saved:</h2>
+
+      <ul>
+        <% student.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :user_id %>
+    <%= form.text_field :user_id, class: 'form-control', placeholder: 'User id' %>
+  </div>
+
+  <div class="row">
+    <div class="col">
+      <div class="field">
+        <%= form.label :institution_name %>
+        <%= form.text_field :institution_name, class: 'form-control', placeholder: 'Institution' %>
+      </div>
+    </div>
+
+    <div class="col">
+      <div class="field" style="margin-bottom: 1em">
+        <%= form.label :interests %>
+        <%= form.text_area(:interests, class: 'form-control') %>
+      </div>
+    </div>
+  </div>
+
+  <div class="field">
+    <%= form.label :bio %>
+    <%= form.text_area(:bio, class: 'form-control') %>
+  </div>
+
+  <div class="row">
+    <div class="col">
+      <div class="field">
+        <%= form.label :course_name %>
+        <%= form.text_field :course_name, class: 'form-control', placeholder: 'Course name' %>
+      </div>
+    </div>
+
+    <div class="col">
+      <div class="field">
+        <%= form.label :year_started_course %>
+        <%= form.text_field :year_started_course, class: 'form-control', placeholder: 'Course started year' %>
+      </div>
+    </div>
+  </div>
+
+  <div class="field">
+    <%= form.label :expected_graduation_year %>
+    <%= form.text_field :expected_graduation_year, class: 'form-control', placeholder: 'Expected graduation year' %>
+  </div>
+  <br/>
+
+  <div class="actions">
+    <%= form.submit 'Add details', class: "btn btn-lg btn-success btn-block" %>
+  </div>
+<% end %>

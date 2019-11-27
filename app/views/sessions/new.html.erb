@@ -6,6 +6,7 @@
     <%= label_tag :email, 'Email', class: 'sr-only' %>
     <%= text_field_tag :email, nil, class: 'form-control', placeholder: 'Email' %>
   </div>
+  <br/>
   <div class="field" style="margin-bottom: 1em">
     <%= label_tag :password, 'Password', class: 'sr-only' %>
     <%= password_field_tag :password, nil, class: 'form-control', placeholder: 'Password' %>
@@ -13,5 +14,4 @@
   <div class="actions">
     <%= submit_tag "Login", class: "btn btn-lg btn-primary btn-block" %>
   </div>
-  <p class="mt-5 mb-3 text-muted">© 2019</p>
 <% end %>

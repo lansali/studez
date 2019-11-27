@@ -4,7 +4,7 @@ RSpec.describe "opportunities/edit", type: :view do
   before(:each) do
     @opportunity = assign(:opportunity, Opportunity.create!(
       :name => "MyString",
-      :author => nil,
+      :business => nil,
       :description => "MyText",
       :requirements => "MyText",
       :other => "MyText",
@@ -19,7 +19,7 @@ RSpec.describe "opportunities/edit", type: :view do
 
       assert_select "input[name=?]", "opportunity[name]"
 
-      assert_select "input[name=?]", "opportunity[author_id]"
+      assert_select "input[name=?]", "opportunity[business_id]"
 
       assert_select "textarea[name=?]", "opportunity[description]"
 

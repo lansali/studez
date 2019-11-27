@@ -1,4 +1,9 @@
 Rails.application.routes.draw do
+  resources :comments
+  resources :submissions
+  resources :businesses
+  resources :employers
+  resources :students
   resources :posts
   resources :opportunities
   get 'home/index'

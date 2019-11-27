@@ -5,7 +5,7 @@ RSpec.describe "opportunities/index", type: :view do
     assign(:opportunities, [
       Opportunity.create!(
         :name => "Name",
-        :author => nil,
+        :business => nil,
         :description => "MyText",
         :requirements => "MyText",
         :other => "MyText",
@@ -13,7 +13,7 @@ RSpec.describe "opportunities/index", type: :view do
       ),
       Opportunity.create!(
         :name => "Name",
-        :author => nil,
+        :business => nil,
         :description => "MyText",
         :requirements => "MyText",
         :other => "MyText",

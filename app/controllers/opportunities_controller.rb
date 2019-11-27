@@ -1,5 +1,6 @@
 class OpportunitiesController < ApplicationController
   before_action :set_opportunity, only: [:show, :edit, :update, :destroy]
+  skip_before_action :authenticate_request, only: [:index, :show]
 
   # GET /opportunities
   # GET /opportunities.json
@@ -69,6 +70,6 @@ class OpportunitiesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def opportunity_params
-      params.require(:opportunity).permit(:name, :author_id, :description, :requirements, :other, :deadline, :category)
+      params.require(:opportunity).permit(:name, :business_id, :description, :requirements, :other, :deadline, :category)
     end
 end

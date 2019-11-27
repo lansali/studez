@@ -4,7 +4,7 @@ RSpec.describe "opportunities/show", type: :view do
   before(:each) do
     @opportunity = assign(:opportunity, Opportunity.create!(
       :name => "Name",
-      :author => nil,
+      :business => nil,
       :description => "MyText",
       :requirements => "MyText",
       :other => "MyText",
