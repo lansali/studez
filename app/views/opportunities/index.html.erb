@@ -10,7 +10,7 @@
       <p class="card-text">Deadline: <%= opportunity.deadline %></p>
       <p class="card-text"><small class="text-muted"><%= opportunity.updated_at %></small></p>
       <%= link_to 'Show', opportunity, class: "card-link" %>
-      <% if current_user.id == opportunity.author_id %>
+      <% if current_user.id == opportunity.business_id %>
         <%= link_to 'Edit', edit_opportunity_path(opportunity), class: "card-link" %>
         <%= link_to 'Destroy', opportunity, method: :delete, data: { confirm: 'Are you sure?' }, class: "card-link" %>
       <% end %>

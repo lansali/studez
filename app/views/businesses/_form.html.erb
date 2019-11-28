@@ -1,4 +1,4 @@
-<%= form_with(model: business, local: true) do |form| %>
+<%= form_with(model: business, class: 'form-sessions', local: true) do |form| %>
   <% if business.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(business.errors.count, "error") %> prohibited this business from being saved:</h2>
@@ -13,25 +13,25 @@
 
   <div class="field">
     <%= form.label :employer_id %>
-    <%= form.text_field :employer_id %>
+    <%= form.text_field :employer_id, class: 'form-control', placeholder: 'Employer id' %>
   </div>
 
   <div class="field">
     <%= form.label :logo %>
-    <%= form.text_field :logo %>
+    <%= form.text_field :logo, class: 'form-control', placeholder: 'Logo' %>
   </div>
 
   <div class="field">
     <%= form.label :description %>
-    <%= form.text_area :description %>
+    <%= form.text_area :description, class: 'form-control', placeholder: 'Description' %>
   </div>
 
   <div class="field">
     <%= form.label :location %>
-    <%= form.text_field :location %>
+    <%= form.text_field :location, class: 'form-control', placeholder: 'Location' %>
   </div>
 
   <div class="actions">
-    <%= form.submit %>
+    <%= form.submit 'Submit', class: "btn btn-lg btn-success btn-block"%>
   </div>
 <% end %>

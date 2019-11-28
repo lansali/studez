@@ -27,18 +27,25 @@
           </li>
           <% if current_user %>
             <li class="nav-item">
-              <%= link_to "| Explore student profiles", users_path, class: "nav-link" %>
+              <%= link_to "| Students", students_path, class: "nav-link" %>
             </li>
             <li class="nav-item">
-              <%= link_to "| Post new blog", new_post_path, class: "nav-link" %>
+              <%= link_to "| Businesses", businesses_path, class: "nav-link" %>
             </li>
+            <% if current_user.moderator == true %>
+              <li class="nav-item">
+                <%= link_to "| Post new blog", new_post_path, class: "nav-link" %>
+              </li>
+            <% end %>
             <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 | Opportunities
               </a>
               <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                 <%= link_to "All opportunities", opportunities_path, class: "dropdown-item" %>
-                <%= link_to "Post opportunity", new_opportunity_path, class: "dropdown-item" %>
+                <% if current_user.employer == true %>
+                  <%= link_to "Post opportunity", new_opportunity_path, class: "dropdown-item" %>
+                <% end %>
                 <div class="dropdown-divider"></div>
                 <%= link_to "Recent opportunities", opportunities_path, class: "dropdown-item" %>
               </div>
@@ -60,7 +67,7 @@
         </ul>
         <form class="form-inline my-2 my-lg-0">
           <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-          <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+          <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search Opportunities</button>
         </form>
       </div>
     </nav>
