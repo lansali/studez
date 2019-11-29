@@ -11,25 +11,19 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= form.label :opportunity_id %>
-    <%= form.text_field :opportunity_id, class: 'form-control', placeholder: 'Opportunity id' %>
-  </div>
-
-  <div class="field">
-    <%= form.label :student_id %>
-    <%= form.text_field :student_id, class: 'form-control', placeholder: 'Student id' %>
-  </div>
+  <%= form.text_field :opportunity_id, type: 'hidden', value: opportunity_id, class: 'form-control', placeholder: 'Opportunity id' %>
+  <%= form.text_field :student_id, type: 'hidden', value: student_id, class: 'form-control', placeholder: 'Student id' %>
 
   <div class="field">
     <%= form.label :cover_letter %>
-    <%= form.text_field :cover_letter, class: 'form-control', placeholder: 'Cover letter' %>
+    <%= form.file_field :cover_letter, direct_upload: true, class: 'form-control', placeholder: 'Upload Cover letter' %>
   </div>
 
   <div class="field">
     <%= form.label :cv %>
-    <%= form.text_field :cv, class: 'form-control', placeholder: 'CV' %>
+    <%= form.file_field :cv, direct_upload: true, class: 'form-control', placeholder: 'Upload CV' %>
   </div>
+  <br/>
 
   <div class="actions">
     <%= form.submit 'Submit', class: "btn btn-lg btn-success btn-block"%>

@@ -14,6 +14,8 @@ class SubmissionsController < ApplicationController
 
   # GET /submissions/new
   def new
+    @opportunity_id = params[:opportunity_id]
+    @student_id = params[:student_id]
     @submission = Submission.new
   end
 
@@ -25,6 +27,8 @@ class SubmissionsController < ApplicationController
   # POST /submissions.json
   def create
     @submission = Submission.new(submission_params)
+    @submission.cv.attach(params[:submission][:cv])
+    @submission.cover_letter.attach(params[:submission][:cover_letter])
 
     respond_to do |format|
       if @submission.save
@@ -54,6 +58,8 @@ class SubmissionsController < ApplicationController
   # DELETE /submissions/1
   # DELETE /submissions/1.json
   def destroy
+    @submission.cv.purge_later
+    @submission.cover_letter.purge_later
     @submission.destroy
     respond_to do |format|
       format.html { redirect_to submissions_url, notice: 'Submission was successfully destroyed.' }

@@ -35,5 +35,6 @@
   <%= @opportunity.category %>
 </p>
 
-<%= link_to 'Edit', edit_opportunity_path(@opportunity) %> |
+<%= link_to 'Apply', new_submission_path(opportunity_id: @opportunity.id, student_id: current_student.id) %> |
+<%= link_to 'Edit', edit_opportunity_path(@opportunity) %>
 <%= link_to 'Back', opportunities_path %>

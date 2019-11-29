@@ -7,9 +7,11 @@
       <p class="card-text"><%= post.author_id %></p>
       <p class="card-text"><small class="text-muted"><%= post.updated_at %></small></p>
       <%= link_to 'Show', post, class: "card-link" %>
-      <% if current_user.id == post.author_id %>
-        <%= link_to 'Edit', edit_post_path(post), class: "card-link" %>
-        <%= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' }, class: "card-link" %>
+      <% if logged_in? %>
+        <% if current_user.id == post.author_id %>
+          <%= link_to 'Edit', edit_post_path(post), class: "card-link" %>
+          <%= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' }, class: "card-link" %>
+        <% end %>
       <% end %>
     </div>
   </div>
