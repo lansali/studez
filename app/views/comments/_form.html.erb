@@ -11,27 +11,17 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= form.label :post_id %>
-    <%= form.text_field :post_id, class: 'form-control', placeholder: 'Post id' %>
-  </div>
-
-  <div class="field">
-    <%= form.label :user_id %>
-    <%= form.text_field :user_id, class: 'form-control', placeholder: 'User id' %>
-  </div>
+  <%= form.text_field :post_id, type: 'hidden', value: post_id, class: 'form-control', placeholder: 'Post id' %>
+  <%= form.text_field :user_id, type: 'hidden', value: current_user.id, class: 'form-control', placeholder: 'User id' %>
+  <%= form.text_field :flagged, type: 'hidden', value: 0, class: 'form-control', placeholder: 'Flagged' %>
 
   <div class="field">
     <%= form.label :comment %>
     <%= form.text_area :comment, class: 'form-control', placeholder: 'Comment' %>
   </div>
-
-  <div class="field">
-    <%= form.label :flagged %>
-    <%= form.text_field :flagged, class: 'form-control', placeholder: 'Flagged' %>
-  </div>
+  <br/>
 
   <div class="actions">
-    <%= form.submit 'Submit', class: "btn btn-lg btn-success btn-block"%>
+    <%= form.submit 'Comment', class: "btn btn-lg btn-success btn-block"%>
   </div>
 <% end %>
