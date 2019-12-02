@@ -1,6 +1,6 @@
 <h1>Editing Opportunity</h1>
 
-<%= render 'form', opportunity: @opportunity %>
+<%= render 'form', opportunity: @opportunity, business_id: @opportunity.business_id %>
 
 <%= link_to 'Show', @opportunity %> |
 <%= link_to 'Back', opportunities_path %>

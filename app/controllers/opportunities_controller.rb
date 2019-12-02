@@ -15,6 +15,7 @@ class OpportunitiesController < ApplicationController
 
   # GET /opportunities/new
   def new
+    @business_id = params[:business_id]
     @opportunity = Opportunity.new
   end
 

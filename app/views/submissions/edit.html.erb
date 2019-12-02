@@ -1,6 +1,6 @@
 <h1>Editing Submission</h1>
 
-<%= render 'form', submission: @submission %>
+<%= render 'form', submission: @submission, opportunity_id: @submission.opportunity_id, student_id: @submission.student_id %>
 
 <%= link_to 'Show', @submission %> |
 <%= link_to 'Back', submissions_path %>

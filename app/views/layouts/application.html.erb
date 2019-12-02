@@ -50,6 +50,33 @@
                 <%= link_to "Recent opportunities", opportunities_path, class: "dropdown-item" %>
               </div>
             </li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                | Notifications
+              </a>
+              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <% if notifications.present? %>
+                  <% if notifications['profile_notifications'].present? %>
+                    <a class="dropdown-item" href="#">Profile notifications</a>
+                    <div class="dropdown-divider" href="#"></div>
+                    <% notifications['profile_notifications'].each do |key, notification| %>
+                      <%= link_to notification[0], send(key, notification[1]), class: "dropdown-item" %>
+                    <% end %>
+                    <div class="dropdown-divider" href="#"></div>
+                  <% end %>
+                  <% if notifications['business_notifications'].present? %>
+                    <a class="dropdown-item" href="#">Business notifications</a>
+                    <div class="dropdown-divider" href="#"></div>
+                    <% notifications['business_notifications'].each do |key, notification| %>
+                      <%= link_to notification, send(key), class: "dropdown-item" %>
+                    <% end %>
+                    <div class="dropdown-divider" href="#"></div>
+                  <% end %>
+                <% else %>
+                  <a class="dropdown-item" href="#">No messages</a>
+                <% end %>
+              </div>
+            </li>
             <li class="nav-item">
               <%= link_to current_user.first_name, current_user, class: "nav-link" %>
             </li>

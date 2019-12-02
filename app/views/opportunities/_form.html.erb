@@ -18,10 +18,7 @@
     <%= form.text_field :name, class: 'form-control', placeholder: 'Name' %>
   </div>
 
-  <div class="field">
-    <%= form.label :business_id %>
-    <%= form.text_field :business_id, class: 'form-control', placeholder: 'Business id' %>
-  </div>
+  <%= form.text_field :business_id, type: 'hidden', value: business_id %>
 
   <div class="field">
     <%= form.label :description %>
