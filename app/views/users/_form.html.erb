@@ -66,6 +66,12 @@
       </div>
     </div>
   </div>
+  <div class="row">
+    <div class="col">
+      <%= form.label :user_type %>
+      <%= form.select :user_type, [['Employer', true], ['Student', false]], {:prompt => "Select User type"}, { :class => 'form-control' } %>
+    </div>
+  </div>
   <br/>
 
   <div class="actions">
