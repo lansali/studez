@@ -1,6 +1,6 @@
-<%= form_with(model: comment, class: 'form-sessions', local: true) do |form| %>
+<%= form_with(model: comment, class: '', local: true) do |form| %>
   <% if comment.errors.any? %>
-    <div id="error_explanation">
+    <div class="">
       <h2><%= pluralize(comment.errors.count, "error") %> prohibited this comment from being saved:</h2>
 
       <ul>
@@ -11,17 +11,17 @@
     </div>
   <% end %>
 
-  <%= form.text_field :post_id, type: 'hidden', value: post_id, class: 'form-control', placeholder: 'Post id' %>
-  <%= form.text_field :user_id, type: 'hidden', value: current_user.id, class: 'form-control', placeholder: 'User id' %>
-  <%= form.text_field :flagged, type: 'hidden', value: 0, class: 'form-control', placeholder: 'Flagged' %>
+  <%= form.text_field :post_id, type: 'hidden', value: post_id, class: '' %>
+  <%= form.text_field :user_id, type: 'hidden', value: current_user.id, class: '' %>
+  <%= form.text_field :flagged, type: 'hidden', value: 0, class: '' %>
 
   <div class="field">
     <%= form.label :comment %>
-    <%= form.text_area :comment, class: 'form-control', placeholder: 'Comment' %>
+    <%= form.text_area :comment, class: '', placeholder: 'Comment' %>
   </div>
   <br/>
 
   <div class="actions">
-    <%= form.submit 'Comment', class: "btn btn-lg btn-success btn-block"%>
+    <%= form.submit 'Comment', class: ""%>
   </div>
 <% end %>

@@ -1,6 +1,6 @@
-<%= form_with(model: employer, class: 'form-sessions', local: true) do |form| %>
+<%= form_with(model: employer, class: '', local: true) do |form| %>
   <% if employer.errors.any? %>
-    <div id="error_explanation">
+    <div class="">
       <h2><%= pluralize(employer.errors.count, "error") %> prohibited this employer from being saved:</h2>
 
       <ul>
@@ -11,23 +11,23 @@
     </div>
   <% end %>
 
-  <div class="field">
+  <div class="">
     <%= form.label :user_id %>
-    <%= form.text_field :user_id, class: 'form-control', placeholder: 'User id' %>
+    <%= form.text_field :user_id, class: '', placeholder: 'User id' %>
   </div>
 
-  <div class="field">
+  <div class="">
     <%= form.label :bio %>
-    <%= form.text_area :bio, class: 'form-control', placeholder: 'Bio' %>
+    <%= form.text_area :bio, class: '', placeholder: 'Bio' %>
   </div>
 
-  <div class="field">
+  <div class="">
     <%= form.label :title %>
-    <%= form.text_field :title, class: 'form-control', placeholder: 'Title' %>
+    <%= form.text_field :title, class: '', placeholder: 'Title' %>
   </div>
   <br/>
 
   <div class="actions">
-    <%= form.submit 'Submit', class: "btn btn-lg btn-success btn-block"%>
+    <%= form.submit 'Submit', class: ""%>
   </div>
 <% end %>

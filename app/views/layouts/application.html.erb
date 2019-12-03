@@ -10,101 +10,98 @@
   </head>
 
   <body>
-  <div class="container-fluid">
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-      <a class="navbar-brand" href="#">Studez</a>
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
+  <div>
+    <nav>
+      <a href="#">Studez</a>
 
-      <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav mr-auto">
-          <li class="nav-item active">
-            <%= link_to "Home", root_path, class: "nav-link"%>
+      <div>
+        <ul>
+          <li>
+            <%= link_to "Home", root_path, class: ""%>
           </li>
-          <li class="nav-item active">
-            <%= link_to "Blog", posts_path, class: "nav-link"%>
+          <li>
+            <%= link_to "Blog", posts_path, class: ""%>
           </li>
           <% if current_user %>
-            <li class="nav-item">
-              <%= link_to "| Students", students_path, class: "nav-link" %>
+            <li>
+              <%= link_to "| Students", students_path, class: "" %>
             </li>
-            <li class="nav-item">
-              <%= link_to "| Businesses", businesses_path, class: "nav-link" %>
+            <li>
+              <%= link_to "| Businesses", businesses_path, class: "" %>
             </li>
             <% if current_user.moderator == true %>
-              <li class="nav-item">
-                <%= link_to "| Post new blog", new_post_path, class: "nav-link" %>
+              <li>
+                <%= link_to "| Post new blog", new_post_path, class: "" %>
               </li>
             <% end %>
-            <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <li>
+              <a class="" href="#">
                 | Opportunities
               </a>
-              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                <%= link_to "All opportunities", opportunities_path, class: "dropdown-item" %>
+              <div class="">
+                <%= link_to "All opportunities", opportunities_path, class: "" %>
                 <% if current_user.employer == true %>
-                  <%= link_to "Post opportunity", new_opportunity_path, class: "dropdown-item" %>
+                  <%= link_to "Post opportunity", new_opportunity_path, class: "" %>
                 <% end %>
-                <div class="dropdown-divider"></div>
-                <%= link_to "Recent opportunities", opportunities_path, class: "dropdown-item" %>
+                <hr/>
+                <%= link_to "Recent opportunities", opportunities_path, class: "" %>
               </div>
             </li>
-            <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <li class="">
+              <a class="" href="#">
                 | Notifications
               </a>
-              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <div class="">
                 <% if notifications.present? %>
                   <% if notifications['profile_notifications'].present? %>
-                    <a class="dropdown-item" href="#">Profile notifications</a>
-                    <div class="dropdown-divider" href="#"></div>
+                    <a class="" href="#">Profile notifications</a>
+                    <hr/>
                     <% notifications['profile_notifications'].each do |key, notification| %>
-                      <%= link_to notification[0], send(key, notification[1]), class: "dropdown-item" %>
+                      <%= link_to notification[0], send(key, notification[1]), class: "" %>
                     <% end %>
-                    <div class="dropdown-divider" href="#"></div>
+                    <hr/>
                   <% end %>
                   <% if notifications['business_notifications'].present? %>
-                    <a class="dropdown-item" href="#">Business notifications</a>
-                    <div class="dropdown-divider" href="#"></div>
+                    <a class="" href="#">Business notifications</a>
+                    <hr/>
                     <% notifications['business_notifications'].each do |key, notification| %>
-                      <%= link_to notification, send(key), class: "dropdown-item" %>
+                      <%= link_to notification, send(key), class: "" %>
                     <% end %>
-                    <div class="dropdown-divider" href="#"></div>
+                    <hr/>
                   <% end %>
                 <% else %>
-                  <a class="dropdown-item" href="#">No messages</a>
+                  <a class="" href="#">No messages</a>
                 <% end %>
               </div>
             </li>
-            <li class="nav-item">
-              <%= link_to current_user.first_name, current_user, class: "nav-link" %>
+            <li>
+              <%= link_to current_user.first_name, current_user, class: "" %>
             </li>
-            <li class="nav-item">
-              <%= link_to "Log Out", logout_path, class: "nav-link" %>
+            <li>
+              <%= link_to "Log Out", logout_path, class: "" %>
             </li>
           <% else %>
-            <li class="nav-item">
-              <%= link_to "Sign Up", signup_path, class: "nav-link" %>
+            <li>
+              <%= link_to "Sign Up", signup_path, class: "" %>
             </li>
-            <li class="nav-item">
-              <%= link_to "Log In", login_path, class: "nav-link" %>
+            <li>
+              <%= link_to "Log In", login_path, class: "" %>
             </li>
           <% end %>
         </ul>
       </div>
     </nav>
   </div>
-  <div class="container">
-    <div class="row">
-      <div class="col-md-8 offset-md-2">
+  <div class="">
+    <div class="">
+      <div class="">
         <%= yield %>
       </div>
     </div>
   </div>
-  <footer class="mastfoot mt-auto">
-    <div class="inner">
-      <p class="mt-5 mb-3 text-muted">© 2019</p>
+  <footer class="">
+    <div class="">
+      <p class="">© 2019</p>
     </div>
   </footer>
   </body>

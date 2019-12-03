@@ -1,15 +1,15 @@
-<p id="notice"><%= notice %></p>
+<p class="notice"><%= notice %></p>
 <% @students.each do |student| %>
-  <div class="card">
-    <svg class="bd-placeholder-img card-img-top" width="100%" height="180" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: Image cap"><title>Placeholder</title><rect width="100%" height="100%" fill="#868e96"></rect><text x="50%" y="50%" fill="#dee2e6" dy=".3em">Image cap</text></svg>
-    <div class="card-body">
-      <h5 class="card-title"><%= student.user_id %></h5>
-      <p class="card-text"><%= student.bio %></p>
-      <p class="card-text"><small class="text-muted"><%= student.updated_at %></small></p>
-      <%= link_to 'Show', student, class: "card-link" %>
+  <div class="">
+    <svg class="" width="100%" height="180" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: Image cap"><title>Placeholder</title><rect width="100%" height="100%" fill="#868e96"></rect><text x="50%" y="50%" fill="#dee2e6" dy=".3em">Image cap</text></svg>
+    <div class="">
+      <h5 class=""><%= student.user_id %></h5>
+      <p class=""><%= student.bio %></p>
+      <p class=""><small class=""><%= student.updated_at %></small></p>
+      <%= link_to 'Show', student, class: "" %>
       <% if current_user.id == student.user_id %>
-        <%= link_to 'Edit', edit_student_path(student), class: "card-link" %>
-        <%= link_to 'Destroy', student, method: :delete, data: { confirm: 'Are you sure?' }, class: "card-link" %>
+        <%= link_to 'Edit', edit_student_path(student), class: "" %>
+        <%= link_to 'Destroy', student, method: :delete, data: { confirm: 'Are you sure?' }, class: "" %>
       <% end %>
     </div>
   </div>

@@ -1,6 +1,6 @@
-<%= form_with(model: business, class: 'form-sessions', local: true) do |form| %>
+<%= form_with(model: business, class: '', local: true) do |form| %>
   <% if business.errors.any? %>
-    <div id="error_explanation">
+    <div class="">
       <h2><%= pluralize(business.errors.count, "error") %> prohibited this business from being saved:</h2>
 
       <ul>
@@ -11,28 +11,28 @@
     </div>
   <% end %>
 
-  <div class="field">
+  <div class="">
     <%= form.label :employer_id %>
-    <%= form.text_field :employer_id, class: 'form-control', placeholder: 'Employer id' %>
+    <%= form.text_field :employer_id, class: '', placeholder: 'Employer id' %>
   </div>
 
-  <div class="field">
+  <div class="">
     <%= form.label :logo %>
-    <%= form.text_field :logo, class: 'form-control', placeholder: 'Logo' %>
+    <%= form.text_field :logo, class: '', placeholder: 'Logo' %>
   </div>
 
-  <div class="field">
+  <div class="">
     <%= form.label :description %>
-    <%= form.text_area :description, class: 'form-control', placeholder: 'Description' %>
+    <%= form.text_area :description, class: '', placeholder: 'Description' %>
   </div>
 
-  <div class="field">
+  <div class="">
     <%= form.label :location %>
-    <%= form.text_field :location, class: 'form-control', placeholder: 'Location' %>
+    <%= form.text_field :location, class: '', placeholder: 'Location' %>
   </div>
   <br/>
 
   <div class="actions">
-    <%= form.submit 'Submit', class: "btn btn-lg btn-success btn-block"%>
+    <%= form.submit 'Submit', class: ""%>
   </div>
 <% end %>

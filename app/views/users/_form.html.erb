@@ -1,6 +1,6 @@
-<%= form_with(model: user, class: 'form-sessions', local: true) do |form| %>
+<%= form_with(model: user, class: "", local: true) do |form| %>
   <% if user.errors.any? %>
-    <div id="error_explanation">
+    <div class="">
       <h2><%= pluralize(user.errors.count, "error") %> prohibited this user from being saved:</h2>
 
       <ul>
@@ -10,71 +10,71 @@
       </ul>
     </div>
   <% end %>
-  <img class="mb-4" src="https://getbootstrap.com/docs/4.3/assets/brand/bootstrap-solid.svg" alt="" width="72" height="72">
-  <h1 class="h3 mb-3 font-weight-normal">Enter your details</h1>
-  <p id="notice"><%= notice %></p>
+  <img class="" src="https://getbootstrap.com/docs/4.3/assets/brand/bootstrap-solid.svg" alt="" width="72" height="72">
+  <h1 class="">Enter your details</h1>
+  <p class="notice"><%= notice %></p>
 
-  <div class="field">
+  <div class="">
     <%= form.label :email %>
-    <%= form.text_field :email, class: 'form-control', placeholder: 'Email' %>
+    <%= form.text_field :email, class: "",  placeholder: 'Email' %>
   </div>
 
-  <div class="row">
-    <div class="col">
-      <div class="field">
+  <div class="">
+    <div class="">
+      <div class="">
         <%= form.label :password %>
-        <%= form.password_field :password, class: 'form-control', placeholder: 'Password' %>
+        <%= form.password_field :password, class: "",  placeholder: 'Password' %>
       </div>
     </div>
     
-    <div class="col">
-      <div class="field">
+    <div class="">
+      <div class="">
         <%= form.label :password_confirmation %>
-        <%= form.password_field :password_confirmation, class: 'form-control', placeholder: 'Confirm password' %>
+        <%= form.password_field :password_confirmation, class: "",  placeholder: 'Confirm password' %>
       </div>
     </div>
   </div>
 
-  <div class="row">
-    <div class="col">
-      <div class="field">
+  <div class="">
+    <div class="">
+      <div class="">
         <%= form.label :first_name %>
-        <%= form.text_field :first_name, class: 'form-control', placeholder: 'First name' %>
+        <%= form.text_field :first_name, class: "",  placeholder: 'First name' %>
       </div>
     </div>
 
-    <div class="col">
-      <div class="field">
+    <div class="">
+      <div class="">
         <%= form.label :middle_name %>
-        <%= form.text_field :middle_name, class: 'form-control', placeholder: 'Middle name' %>
+        <%= form.text_field :middle_name, class: "",  placeholder: 'Middle name' %>
       </div>
     </div>
   </div>
 
-  <div class="row">
-    <div class="col">
-      <div class="field">
+  <div class="">
+    <div class="">
+      <div class="">
         <%= form.label :last_name %>
-        <%= form.text_field :last_name, class: 'form-control', placeholder: 'Last name' %>
+        <%= form.text_field :last_name, class: "",  placeholder: 'Last name' %>
       </div>
     </div>
 
-    <div class="col">
-      <div class="field">
+    <div class="">
+      <div class="">
         <%= form.label :username %>
-        <%= form.text_field :username, class: 'form-control', placeholder: 'Username' %>
+        <%= form.text_field :username, class: "",  placeholder: 'Username' %>
       </div>
     </div>
   </div>
-  <div class="row">
-    <div class="col">
+  <div class="">
+    <div class="">
       <%= form.label :user_type %>
-      <%= form.select :user_type, [['Employer', true], ['Student', false]], {:prompt => "Select User type"}, { :class => 'form-control' } %>
+      <%= form.select :user_type, [['Employer', true], ['Student', false]], {:prompt => "Select User type"}, { :class => '' } %>
     </div>
   </div>
   <br/>
 
   <div class="actions">
-    <%= form.submit 'Register', class: "btn btn-lg btn-success btn-block" %>
+    <%= form.submit 'Register', class: "" %>
   </div>
 <% end %>

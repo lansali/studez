@@ -1,6 +1,6 @@
-<%= form_with(model: submission, class: 'form-sessions', local: true) do |form| %>
+<%= form_with(model: submission, class: "", local: true) do |form| %>
   <% if submission.errors.any? %>
-    <div id="error_explanation">
+    <div class="">
       <h2><%= pluralize(submission.errors.count, "error") %> prohibited this submission from being saved:</h2>
 
       <ul>
@@ -16,16 +16,16 @@
 
   <div class="field">
     <%= form.label :cover_letter %>
-    <%= form.file_field :cover_letter, direct_upload: true, class: 'form-control', placeholder: 'Upload Cover letter' %>
+    <%= form.file_field :cover_letter, direct_upload: true, class: "",  placeholder: 'Upload Cover letter' %>
   </div>
 
   <div class="field">
     <%= form.label :cv %>
-    <%= form.file_field :cv, direct_upload: true, class: 'form-control', placeholder: 'Upload CV' %>
+    <%= form.file_field :cv, direct_upload: true, class: "",  placeholder: 'Upload CV' %>
   </div>
   <br/>
 
   <div class="actions">
-    <%= form.submit 'Submit', class: "btn btn-lg btn-success btn-block"%>
+    <%= form.submit 'Submit', class: ""%>
   </div>
 <% end %>

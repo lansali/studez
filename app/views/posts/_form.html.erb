@@ -1,6 +1,6 @@
-<%= form_with(model: post, class: 'form-sessions', local: true) do |form| %>
+<%= form_with(model: post, class: "", local: true) do |form| %>
   <% if post.errors.any? %>
-    <div id="error_explanation">
+    <div class="">
       <h2><%= pluralize(post.errors.count, "error") %> prohibited this post from being saved:</h2>
 
       <ul>
@@ -13,20 +13,20 @@
 
   <div class="field">
     <%= form.label :title %>
-    <%= form.text_field :title, class: 'form-control', placeholder: 'Title' %>
+    <%= form.text_field :title, class: "",  placeholder: 'Title' %>
   </div>
 
   <div class="field">
     <%= form.label :author_id %>
-    <%= form.text_field :author_id, class: 'form-control', placeholder: 'Author id' %>
+    <%= form.text_field :author_id, class: "",  placeholder: 'Author id' %>
   </div>
 
   <div class="field">
     <%= form.label :content %>
-    <%= form.rich_text_area :content, class: 'form-control', placeholder: 'Content' %>
+    <%= form.rich_text_area :content, class: "",  placeholder: 'Content' %>
   </div>
 
   <div class="actions">
-    <%= form.submit 'Submit', class: "btn btn-lg btn-success btn-block"%>
+    <%= form.submit 'Submit', class: ""%>
   </div>
 <% end %>
