@@ -1,6 +1,9 @@
 @import './actiontext.scss';
 @import 'trix';
 @import './scaffolds.scss';
+@import "tailwindcss/base";
+@import "tailwindcss/components";
+@import "tailwindcss/utilities";
 
 // Fixes bootstrap nav-brand container overlap
 @include media-breakpoint-down(xs) {
