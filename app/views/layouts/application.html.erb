@@ -10,98 +10,78 @@
   </head>
 
   <body>
-  <div>
-    <nav>
-      <a href="#">Studez</a>
+  <div class="flex items-stretch h-16 border-b-2 border-grey-200">
+    <div class="flex-1 max-w-sm flex border-r-2 border-grey-200">
+      <p class="flex-1 self-center text-center">Studez</p>
+    </div>
 
-      <div>
-        <ul>
-          <li>
-            <%= link_to "Home", root_path, class: ""%>
-          </li>
-          <li>
-            <%= link_to "Blog", posts_path, class: ""%>
-          </li>
-          <% if current_user %>
-            <li>
-              <%= link_to "| Students", students_path, class: "" %>
-            </li>
-            <li>
-              <%= link_to "| Businesses", businesses_path, class: "" %>
-            </li>
-            <% if current_user.moderator == true %>
-              <li>
-                <%= link_to "| Post new blog", new_post_path, class: "" %>
-              </li>
-            <% end %>
-            <li>
-              <a class="" href="#">
-                | Opportunities
-              </a>
-              <div class="">
-                <%= link_to "All opportunities", opportunities_path, class: "" %>
-                <% if current_user.employer == true %>
-                  <%= link_to "Post opportunity", new_opportunity_path, class: "" %>
-                <% end %>
-                <hr/>
-                <%= link_to "Recent opportunities", opportunities_path, class: "" %>
-              </div>
-            </li>
-            <li class="">
-              <a class="" href="#">
-                | Notifications
-              </a>
-              <div class="">
-                <% if notifications.present? %>
-                  <% if notifications['profile_notifications'].present? %>
-                    <a class="" href="#">Profile notifications</a>
-                    <hr/>
-                    <% notifications['profile_notifications'].each do |key, notification| %>
-                      <%= link_to notification[0], send(key, notification[1]), class: "" %>
-                    <% end %>
-                    <hr/>
-                  <% end %>
-                  <% if notifications['business_notifications'].present? %>
-                    <a class="" href="#">Business notifications</a>
-                    <hr/>
-                    <% notifications['business_notifications'].each do |key, notification| %>
-                      <%= link_to notification, send(key), class: "" %>
-                    <% end %>
-                    <hr/>
-                  <% end %>
-                <% else %>
-                  <a class="" href="#">No messages</a>
-                <% end %>
-              </div>
-            </li>
-            <li>
-              <%= link_to current_user.first_name, current_user, class: "" %>
-            </li>
-            <li>
-              <%= link_to "Log Out", logout_path, class: "" %>
-            </li>
-          <% else %>
-            <li>
-              <%= link_to "Sign Up", signup_path, class: "" %>
-            </li>
-            <li>
-              <%= link_to "Log In", login_path, class: "" %>
-            </li>
-          <% end %>
-        </ul>
-      </div>
-    </nav>
-  </div>
-  <div class="">
-    <div class="">
-      <div class="">
-        <%= yield %>
-      </div>
+    <div class="flex-6 flex justify-between h-full">
+      <%= link_to "Home", root_path, class: "ml-6 h-16 pt-6 text-sm text-center self-center"%>
+      <%= link_to "Find a job", posts_path, class: "ml-6 h-16 pt-6 text-sm text-center self-center border-b-2 border-green-500 hover:border-green-700"%>
+      <a class="ml-6 h-16 pt-6 text-sm text-center self-center" href="#">
+        Post a job
+      </a>
+      <% if current_user %>
+        <%= link_to "Students", students_path, class: "ml-6 h-16 pt-6 text-sm text-center self-center" %>
+        <%= link_to "Businesses", businesses_path, class: "ml-6 h-16 pt-6 text-sm text-center self-center" %>
+        <% if current_user.moderator == true %>
+          <%= link_to "Post new blog", new_post_path, class: "ml-6 h-16 pt-6 text-sm text-center self-center" %>
+        <% end %>
+        <a class="ml-6 h-16 pt-6 text-sm text-center self-center" href="#">
+          Opportunities
+        </a>
+        <a class="ml-6 h-16 pt-6 text-sm text-center self-center" href="#">
+          Notifications
+        </a>
+      <% end %>
+    </div>
+    <div class="flex-1 flex justify-end">
+      <% if current_user %>
+        <%= link_to current_user.first_name, current_user, class: "ml-6 h-16 pt-6 text-green-500 text-sm text-center self-center" %>
+        <%= link_to "Log Out", logout_path, class: "ml-4 mr-4 text-sm text-center self-center bg-white border-2 border-pink-500 hover:bg-pink-500 text-pink-500 hover:text-white font-bold px-4 py-2 rounded" %>
+      <% else %>
+        <%= link_to "Sign Up", signup_path, class: "text-sm text-center self-center bg-white border-2 border-blue-500 hover:bg-blue-500 text-blue-500 hover:text-white font-bold px-4 py-2 rounded" %>
+        <%= link_to "Log In", login_path, class: "ml-6 mr-4 text-sm text-center self-center bg-white border-2 border-green-500 hover:bg-green-500 text-green-500 hover:text-white font-bold px-4 py-2 rounded" %>
+      <% end %>
     </div>
   </div>
-  <footer class="">
-    <div class="">
-      <p class="">© 2019</p>
+  <%= yield %>
+  <div class="flex py-12 px-20" style="background-color: #242020ed; color: #5a5858;">
+    <div class="flex-1">
+      <p class="text-lg text-white mb-4">Quick links<p>
+      <p>Post a new job<p>
+      <p>Job listing<p>
+      <p>Employer listing<p>
+    </div>
+    <div class="flex-1">
+      <p class="text-lg text-white mb-4">For Students<p>
+      <p>User dashboard<p>
+      <p>CV packages<p>
+      <p>Career paths<p>
+    </div>
+    <div class="flex-1">
+      <p class="text-lg text-white mb-4">For employers<p>
+      <p>Post a new job<p>
+      <p>Candiate listing<p>
+    </div>
+    <div class="flex-1">
+      <p class="text-lg text-white mb-4">Newsletter<p>
+      <p class="mb-4">Subscribe to Studez newsletter to get the latest jobs posted, candidates and other latests news. Stay updated<p>
+      <form class="flex justify-between">
+        <input type="text" placeholder="Enter your email address" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"/>
+        <button type="button" class="ml-2 bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
+          <i class="icon-rss"></i>
+        </button>
+      <form>
+    </div>
+  </div>
+  <footer class="flex py-8 px-24" style="background-color: #1b1b1b; color: #5a5858;">
+    <p class="flex-1">© 2019 Studez. All Rights Reserved.</p>
+    <div class="flex-6">
+      <a href="#" class="ml-6">Privacy Policy</a>
+      <a href="#" class="ml-6">Terms of Service</a>
+      <a href="#" class="ml-6">Security & Privacy</a>
+      <a href="#" class="ml-6">English ></a>
     </div>
   </footer>
   </body>

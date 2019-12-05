@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Studez</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+  <div class="flex border-b-2 border-teal-400">
+    <p class="p-4 border-r-2 border-teal-400">Studez</p>
+
+    <nav>
+      <ul class="flex p-4">
+        <li>
+          <%= link_to "Home", root_path, class: ""%>
+        </li>
+        <li>
+          <%= link_to "Blog", posts_path, class: ""%>
+        </li>
+        <% if current_user %>
+          <li>
+            <%= link_to "| Students", students_path, class: "" %>
+          </li>
+          <li>
+            <%= link_to "| Businesses", businesses_path, class: "" %>
+          </li>
+          <% if current_user.moderator == true %>
+            <li>
+              <%= link_to "| Post new blog", new_post_path, class: "" %>
+            </li>
+          <% end %>
+          <li>
+            <a class="" href="#">
+              | Opportunities
+            </a>
+            <div class="">
+              <%= link_to "All opportunities", opportunities_path, class: "" %>
+              <% if current_user.employer == true %>
+                <%= link_to "Post opportunity", new_opportunity_path, class: "" %>
+              <% end %>
+              <hr/>
+              <%= link_to "Recent opportunities", opportunities_path, class: "" %>
+            </div>
+          </li>
+          <li class="">
+            <a class="" href="#">
+              | Notifications
+            </a>
+            <div class="">
+              <% if notifications.present? %>
+                <% if notifications['profile_notifications'].present? %>
+                  <a class="" href="#">Profile notifications</a>
+                  <hr/>
+                  <% notifications['profile_notifications'].each do |key, notification| %>
+                    <%= link_to notification[0], send(key, notification[1]), class: "" %>
+                  <% end %>
+                  <hr/>
+                <% end %>
+                <% if notifications['business_notifications'].present? %>
+                  <a class="" href="#">Business notifications</a>
+                  <hr/>
+                  <% notifications['business_notifications'].each do |key, notification| %>
+                    <%= link_to notification, send(key), class: "" %>
+                  <% end %>
+                  <hr/>
+                <% end %>
+              <% else %>
+                <a class="" href="#">No messages</a>
+              <% end %>
+            </div>
+          </li>
+          <li>
+            <%= link_to current_user.first_name, current_user, class: "" %>
+          </li>
+          <li>
+            <%= link_to "Log Out", logout_path, class: "" %>
+          </li>
+        <% else %>
+          <li>
+            <%= link_to "Sign Up", signup_path, class: "" %>
+          </li>
+          <li>
+            <%= link_to "Log In", login_path, class: "" %>
+          </li>
+        <% end %>
+      </ul>
+    </nav>
+  </div>
+  <div class="">
+    <div class="">
+      <div class="">
+        <%= yield %>
+      </div>
+    </div>
+  </div>
+  <footer class="">
+    <div class="">
+      <p class="">© 2019</p>
+    </div>
+  </footer>
+  </body>
+</html>
