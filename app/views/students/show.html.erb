@@ -35,5 +35,7 @@
   <%= @student.interests %>
 </p>
 
-<%= link_to 'Edit', edit_student_path(@student) %> |
+<% if current_user.id == @student.user_id %>
+  <%= link_to 'Edit', edit_student_path(@student) %> |
+<% end %>
 <%= link_to 'Back', students_path %>
