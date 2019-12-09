@@ -1,17 +1,19 @@
-<%= form_tag(sessions_path, {class: "px-64 text-center"}) do |form| %>
-  <img class="" src="https://getbootstrap.com/docs/4.3/assets/brand/bootstrap-solid.svg" alt="" width="72" height="72">
-  <h1 class="text-xl font-bold">Loginß</h1>
-  <p class="notice"><%= notice %></p>
-  <div class="mb-2">
-    <%= label_tag :email, 'Email', class: "" %>
-    <%= text_field_tag :email, nil, class: "shadow appearance-none border rounded w-full py-2 px-2 text-gray-700 leading-tight focus:outline-none focus:shadow-outline",  placeholder: 'Email' %>
-  </div>
-  <br/>
-  <div class="mb-2">
-    <%= label_tag :password, 'Password', class: "" %>
-    <%= password_field_tag :password, nil, class: "shadow appearance-none border rounded w-full py-2 px-2 text-gray-700 leading-tight focus:outline-none focus:shadow-outline",  placeholder: 'Password' %>
-  </div>
-  <div class="actions">
-    <%= submit_tag "Login", class: "mb-4 bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" %>
-  </div>
-<% end %>
+<div class="bg-gray-200 px-64 py-8">
+  <%= form_tag(sessions_path, {class: "bg-white shadow py-12 px-32 text-center"}) do |form| %>
+    <img class="" src="https://getbootstrap.com/docs/4.3/assets/brand/bootstrap-solid.svg" alt="" width="72" height="72">
+    <h1 class="text-xl font-bold">Loginß</h1>
+    <p class="notice"><%= notice %></p>
+    <div class="mb-2">
+      <%= label_tag :email, 'Email', class: "" %>
+      <%= text_field_tag :email, nil, class: "shadow appearance-none border rounded w-full py-2 px-2 text-gray-700 leading-tight focus:outline-none focus:shadow-outline",  placeholder: 'Email' %>
+    </div>
+    <br/>
+    <div class="mb-2">
+      <%= label_tag :password, 'Password', class: "" %>
+      <%= password_field_tag :password, nil, class: "shadow appearance-none border rounded w-full py-2 px-2 text-gray-700 leading-tight focus:outline-none focus:shadow-outline",  placeholder: 'Password' %>
+    </div>
+    <div class="actions">
+      <%= submit_tag "Login", class: "mb-4 bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" %>
+    </div>
+  <% end %>
+</div>
