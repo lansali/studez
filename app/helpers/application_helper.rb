@@ -1,4 +1,9 @@
 module ApplicationHelper
+    def current_class?(test_path)
+        return ' border-b-2 border-green-500 hover:border-green-700' if request.path == test_path
+        ''
+    end
+
     def build_notifications
         return if !logged_in?
         user_notifications = {}

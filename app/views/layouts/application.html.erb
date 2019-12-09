@@ -16,15 +16,15 @@
     </div>
 
     <div class="flex-6 flex justify-between h-full">
-      <%= link_to "Home", root_path, class: "ml-6 h-16 pt-6 text-sm text-center self-center"%>
-      <%= link_to "Blog", posts_path, class: "ml-6 h-16 pt-6 text-sm text-center self-center border-b-2 border-green-500 hover:border-green-700"%>
-      <%= link_to "Post a job", new_opportunity_path, class: "ml-6 h-16 pt-6 text-sm text-center self-center" %>
-      <%= link_to "Find a job", opportunities_path, class: "ml-6 h-16 pt-6 text-sm text-center self-center" %>
+      <%= link_to "Home", root_path, class: "ml-6 h-16 pt-6 text-sm text-center self-center" + current_class?(root_path) %>
+      <%= link_to "Blog", posts_path, class: "ml-6 h-16 pt-6 text-sm text-center self-center" + current_class?(posts_path)%>
+      <%= link_to "Post a job", new_opportunity_path, class: "ml-6 h-16 pt-6 text-sm text-center self-center" + current_class?(new_opportunity_path) %>
+      <%= link_to "Find a job", opportunities_path, class: "ml-6 h-16 pt-6 text-sm text-center self-center" + current_class?(opportunities_path) %>
       <% if current_user %>
-        <%= link_to "Students", students_path, class: "ml-6 h-16 pt-6 text-sm text-center self-center" %>
-        <%= link_to "Businesses", businesses_path, class: "ml-6 h-16 pt-6 text-sm text-center self-center" %>
+        <%= link_to "Students", students_path, class: "ml-6 h-16 pt-6 text-sm text-center self-center" + current_class?(students_path) %>
+        <%= link_to "Businesses", businesses_path, class: "ml-6 h-16 pt-6 text-sm text-center self-center" + current_class?(businesses_path) %>
         <% if current_user.moderator == true %>
-          <%= link_to "Post new blog", new_post_path, class: "ml-6 h-16 pt-6 text-sm text-center self-center" %>
+          <%= link_to "Post new blog", new_post_path, class: "ml-6 h-16 pt-6 text-sm text-center self-center" + current_class?(new_post_path) %>
         <% end %>
         <a class="ml-6 h-16 pt-6 text-sm text-center self-center" href="#">
           Notifications
