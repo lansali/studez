@@ -9,7 +9,7 @@
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
-  <body>
+  <body class="h-screen">
   <div class="flex items-stretch h-16 border-b-2 border-grey-200">
     <div class="flex-1 max-w-sm flex border-r-2 border-grey-200">
       <p class="flex-1 self-center text-center">Studez</p>
@@ -17,17 +17,15 @@
 
     <div class="flex-6 flex justify-between h-full">
       <%= link_to "Home", root_path, class: "ml-6 h-16 pt-6 text-sm text-center self-center"%>
-      <%= link_to "Find a job", posts_path, class: "ml-6 h-16 pt-6 text-sm text-center self-center border-b-2 border-green-500 hover:border-green-700"%>
+      <%= link_to "Blog", posts_path, class: "ml-6 h-16 pt-6 text-sm text-center self-center border-b-2 border-green-500 hover:border-green-700"%>
       <%= link_to "Post a job", new_opportunity_path, class: "ml-6 h-16 pt-6 text-sm text-center self-center" %>
+      <%= link_to "Find a job", opportunities_path, class: "ml-6 h-16 pt-6 text-sm text-center self-center" %>
       <% if current_user %>
         <%= link_to "Students", students_path, class: "ml-6 h-16 pt-6 text-sm text-center self-center" %>
         <%= link_to "Businesses", businesses_path, class: "ml-6 h-16 pt-6 text-sm text-center self-center" %>
         <% if current_user.moderator == true %>
           <%= link_to "Post new blog", new_post_path, class: "ml-6 h-16 pt-6 text-sm text-center self-center" %>
         <% end %>
-        <a class="ml-6 h-16 pt-6 text-sm text-center self-center" href="#">
-          Opportunities
-        </a>
         <a class="ml-6 h-16 pt-6 text-sm text-center self-center" href="#">
           Notifications
         </a>
