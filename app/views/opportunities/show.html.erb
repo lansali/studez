@@ -1,44 +1,46 @@
 <p class="notice"><%= notice %></p>
-
-<p>
-  <strong>Name:</strong>
-  <%= @opportunity.name %>
-</p>
-
-<p>
-  <strong>Business id:</strong>
-  <%= @opportunity.business_id %>
-</p>
-
-<p>
-  <strong>Description:</strong>
-  <%= @opportunity.description %>
-</p>
-
-<p>
-  <strong>Requirements:</strong>
-  <%= @opportunity.requirements %>
-</p>
-
-<p>
-  <strong>Other:</strong>
-  <%= @opportunity.other %>
-</p>
-
-<p>
-  <strong>Deadline:</strong>
-  <%= @opportunity.deadline %>
-</p>
-
-<p>
-  <strong>Category:</strong>
-  <%= @opportunity.category %>
-</p>
-
-<% if current_student.present? %>
-  <%= link_to 'Apply', new_submission_path(opportunity_id: @opportunity.id, student_id: current_student.id) %> |
-<% end %>
-<% if current_employer.businesses.ids.include?(@opportunity.business_id) %>
-  <%= link_to 'Edit', edit_opportunity_path(@opportunity) %> |
-<% end %>
-<%= link_to 'Back', opportunities_path %>
+<div class="">
+  <div class="h-32" style="background-image: linear-gradient(-90deg, #8BC34A, #009688);"></div>
+  <div class="bg-gray-200 shadow-lg px-64 pt-12 pb-24">
+    <div class="bg-white py-12 w-1/2 shadow-lgrounded">
+      <h3 class="text-3xl font-bold pl-8 mb-4"><%= @opportunity.name %></h3>
+      <div class="flex pl-8 mb-4">
+        <p class="w-1/4">$2000-4000</p>
+        <p class="w-1/4">Posted 2 days ago</p>
+        <p class="w-1/4">Nairobi, KE</p>
+        <%= link_to 'View other jobs', opportunities_path, class: "w-1/4 hover:underline" %>
+      </div>
+      <div class="flex pl-4 content-center mb-4 border-t-2 border-b-2 border-gray-200 text-sm tracking-wider">
+        <div class="w-1/3 p-4 border-r-2">
+          <p class=""><b>TYPE:</b> Internship</p>
+        </div>
+        <div class="w-1/3 p-4 border-r-2">
+          <p class=""><b>Category:</b> <%= @opportunity.category %></p>
+        </div>
+        <div class="w-1/3 p-4">
+          <p class=""><b>Deadline:</b> <%= @opportunity.deadline %></p>
+        </div>
+      </div>
+      <div class="pl-8 mb-4">
+        <p class="text-xl font-bold">About the work</p>
+        <p><%= @opportunity.description %></p>
+      </div>
+      <div class="pl-8 mb-4">
+        <p class="text-xl font-bold">Requirements</p>
+        <p><%= @opportunity.requirements %></p>
+      </div>
+      <div class="pl-8 mb-4">
+        <p class="text-xl font-bold">Additional Skills</p>
+        <p><%= @opportunity.other %></p>
+      </div>
+      <div class="pl-8 mb-4">
+        <% if current_student.present? %>
+          <%= link_to 'Apply', new_submission_path(opportunity_id: @opportunity.id, student_id: current_student.id), class: "mb-4 bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" %>
+        <% end %>
+        <% if current_employer.businesses.ids.include?(@opportunity.business_id) %>
+          <%= link_to 'Edit', edit_opportunity_path(@opportunity), class: "mb-4 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
