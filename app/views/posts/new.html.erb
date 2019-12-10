@@ -1,5 +1,23 @@
-<h1>New Post</h1>
-
-<%= render 'form', post: @post %>
-
-<%= link_to 'Back', posts_path %>
+<p class="notice"><%= notice %></p>
+<div class="bg-gray-100 flex pt-12 pl-40 pr-24">
+  <div class="w-1/4  pr-4">
+    <h3 class="tracking-wide mb-4">Search keywords</h3>
+    <input type="text" placeholder="By name" class="shadow appearance-none border rounded w-full py-3 px-3 mb-4 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" />
+    <h3 class="tracking-wide mb-4">Location</h3>
+    <input type="text" placeholder="By location" class="shadow appearance-none border rounded w-full py-3 px-3 mb-4 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" />
+    <h3 class="tracking-wide mb-4">Category</h3>
+    <input type="text" placeholder="By categories" class="shadow appearance-none border rounded w-full py-3 px-3 mb-4 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" />
+  </div>
+  <div class="w-3/4 max-w-3xl">
+    <h3 class="tracking-wide mb-4">New Blog</h3>
+    <div class="mb-4 rounded-lg w-full lg:flex">
+      <div class="border-r border-b border-l border-grey-light lg:border-l-0 lg:border-t lg:border-grey-light bg-white rounded-b lg:rounded-b-none lg:rounded-r p-4 flex flex-col justify-between leading-normal">
+        <div class="mb-8">
+            <div class="text-grey-darker text-base mb-4">
+                <%= render 'form', post: @post %>
+            </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
