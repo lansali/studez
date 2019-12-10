@@ -1,0 +1,24 @@
+/* Pagination styling */
+.pagination {
+    @apply flex bg-gray-300 text-center text-gray-600 h-12 mb-4 px-6 py-3 pr-24 rounded;
+}
+
+.pagination > a:not(.next_page):not(.previous_page), .pagination > em {
+    @apply flex-auto  h-6 rounded text-center
+}
+
+.pagination > a:not(.next_page):not(.previous_page):hover, .pagination > em:hover {
+    @apply bg-green-500 text-white;
+}
+
+.previous_page {
+    @apply flex-auto h-6 mr-2 border-r-2 border-gray-500;
+}
+
+.next_page {
+    @apply flex-auto h-6 ml-2 border-l-2 border-gray-500 pl-2;
+}
+
+.previous_page:hover, .next_page:hover {
+    @apply underline;
+}

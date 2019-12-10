@@ -5,7 +5,7 @@ class OpportunitiesController < ApplicationController
   # GET /opportunities
   # GET /opportunities.json
   def index
-    @opportunities = Opportunity.all
+    @opportunities = Opportunity.paginate(page: params[:page], per_page: 7)
   end
 
   # GET /opportunities/1

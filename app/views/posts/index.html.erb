@@ -8,10 +8,10 @@
     <h3 class="tracking-wide mb-4">Category</h3>
     <input type="text" placeholder="By categories" class="shadow appearance-none border rounded w-full py-3 px-3 mb-4 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" />
   </div>
-  <div class="w-3/4">
+  <div class="w-3/4 max-w-3xl">
     <h3 class="tracking-wide mb-4">Blog Posts</h3>
     <% @posts.each do |post| %>
-      <div class="py-8 pr-24 rounded-lg mb-4 w-full lg:flex">
+      <div class="pr-24 mb-4 rounded-lg w-full lg:flex">
         <div class="h-48 lg:h-auto lg:w-48 flex-none bg-cover rounded-t lg:rounded-t-none lg:rounded-l text-center overflow-hidden" style="background-image: url('https://tailwindcss.com/img/card-left.jpg')" title="Woman holding a mug">
         </div>
         <div class="border-r border-b border-l border-grey-light lg:border-l-0 lg:border-t lg:border-grey-light bg-white rounded-b lg:rounded-b-none lg:rounded-r p-4 flex flex-col justify-between leading-normal">
@@ -32,31 +32,19 @@
               <p class="text-grey-dark"><%= post.updated_at %></p>
             </div>
             <div class="flex-auto flex items-center justify-end">
-              <%= link_to 'Read more', post, class: "bg-white border-2 border-green-500 hover:bg-green-500 text-green-500 hover:text-white font-bold py-2 px-4 rounded" %>
-              <% if current_user.id == post.author_id %>
-                <%= link_to 'Edit', edit_post_path(post), class: "ml-2 bg-white border-2 border-blue-500 hover:bg-blue-500 text-blue-500 hover:text-white font-bold py-2 px-4 rounded" %>
-                <%= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' }, class: "ml-2 bg-white border-2 border-red-500 hover:bg-red-500 text-red-500 hover:text-white font-bold py-2 px-4 rounded" %>
+              <%= link_to 'Read', post, class: "bg-white border-2 border-green-500 hover:bg-green-500 text-green-500 hover:text-white font-bold py-2 px-4 rounded" %>
+              <% if logged_in? %>
+                <% if current_user.id == post.author_id %>
+                  <%= link_to 'Edit', edit_post_path(post), class: "ml-2 bg-white border-2 border-blue-500 hover:bg-blue-500 text-blue-500 hover:text-white font-bold py-2 px-4 rounded" %>
+                  <%= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' }, class: "ml-2 bg-white border-2 border-red-500 hover:bg-red-500 text-red-500 hover:text-white font-bold py-2 px-4 rounded" %>
+                <% end %>
               <% end %>
             </div>
           </div>
         </div>
       </div>
     <% end %>
-    <div class="flex bg-gray-300 text-center text-gray-600 h-12 mb-4 px-6 py-3 pr-24 rounded">
-      <div class="flex-auto h-6 mr-2 border-r-2 border-gray-500 hover:underline">Prev</div>
-      <ol class="flex flex-auto"> 
-        <li class="flex-auto hover:bg-green-500 hover:text-white h-6 rounded text-center">1</li>
-        <li class="flex-auto hover:bg-green-500 hover:text-white h-6 rounded text-center">2</li>
-        <li class="flex-auto hover:bg-green-500 hover:text-white h-6 rounded text-center">3</li>
-        <li class="flex-auto hover:bg-green-500 hover:text-white h-6 rounded text-center">4</li>
-        <li class="flex-auto hover:bg-green-500 hover:text-white h-6 rounded text-center">5</li>
-        <li class="flex-auto hover:bg-green-500 hover:text-white h-6 rounded text-center">6</li>
-        <li class="flex-auto hover:bg-green-500 hover:text-white h-6 rounded text-center">7</li>
-        <li class="flex-auto h-6 rounded text-center">...</li>
-        <li class="flex-auto hover:bg-green-500 hover:text-white h-6 rounded text-center">45</li>
-      </ol>
-      <div class="flex-auto h-6 ml-2 border-l-2 border-gray-500 pl-2 hover:underline">Next</div>
-    </div>
+    <%= will_paginate @posts %>
   </div>
 </div>
 

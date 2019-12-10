@@ -4,7 +4,7 @@ class EmployersController < ApplicationController
   # GET /employers
   # GET /employers.json
   def index
-    @employers = Employer.all
+    @employers = Employer.paginate(page: params[:page], per_page: 7)
   end
 
   # GET /employers/1
