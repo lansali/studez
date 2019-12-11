@@ -8,7 +8,7 @@ require("turbolinks").start()
 require("@rails/activestorage").start()
 require("channels")
 require("trix")
-
+require("@rails/actiontext")
 import '../../assets/stylesheets/application'
 
 
@@ -18,6 +18,3 @@ import '../../assets/stylesheets/application'
 //
 // const images = require.context('../images', true)
 // const imagePath = (name) => images(name, true)
-
-require("trix")
-require("@rails/actiontext")

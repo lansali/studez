@@ -13,7 +13,7 @@
       <span class="bg-white text-sm px-2 py-1 mr-2 rounded hover:shadow-lg"><i class="icon-tags"></i> UI/UX</span>
       <span class="text-sm px-2 py-1 mr-2 hover:text-red-500"><i class="icon-trash"></i>Clear All</span>
     </div>
-    <h3 class="tracking-wide mb-4">You have <%= @submissions.count %> Submissions</h3>
+    <h3 class="tracking-wide mb-4">You have <%= @submissions.count %> Submission<% if @submissions.count > 1 %>s<% end %></h3>
     <% @submissions.each do |submission| %>
       <div class="flex bg-white shadow py-8 px-24 rounded-lg mb-4 border-l-4 border-white hover:border-green-500">
         <p class="flex-auto">
