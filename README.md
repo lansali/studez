@@ -16,3 +16,4 @@ Sylvance Kerandi
 - https://medium.com/forest-admin/rails-migrations-tricks-guide-code-cheatsheet-included-dca935354f22
 - https://medium.com/@guilhermepejon/how-to-install-bootstrap-4-3-in-a-rails-6-app-using-webpack-9eae7a6e2832
 - https://dev.to/pezza/redisearch-on-rails-581p
+- https://www.chrisjmendez.com/2016/12/18/populating-your-database-in-rails-using-seeds/
