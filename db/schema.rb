@@ -50,7 +50,6 @@ ActiveRecord::Schema.define(version: 2019_11_27_134205) do
     t.bigint "employer_id", null: false
     t.string "logo"
     t.text "description"
-    t.string "location"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["employer_id"], name: "index_businesses_on_employer_id"
@@ -80,6 +79,7 @@ ActiveRecord::Schema.define(version: 2019_11_27_134205) do
     t.string "name"
     t.bigint "business_id", null: false
     t.text "description"
+    t.string "location"
     t.text "requirements"
     t.text "other"
     t.date "deadline"

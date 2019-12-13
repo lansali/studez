@@ -4,6 +4,7 @@ class CreateOpportunities < ActiveRecord::Migration[6.0]
       t.string :name
       t.references :business, null: false, foreign_key: true
       t.text :description
+      t.string :location
       t.text :requirements
       t.text :other
       t.date :deadline
