@@ -3,7 +3,7 @@ Connections for students in higher learning
 
 ## Running the application
 To spin up the app use
-- `npm install`
+- `yarn install`
 - `gem install foreman`
 - `foreman start -f Procfile.dev`
 
