@@ -33,6 +33,7 @@
   </div>
 </div>
 
+<% if logged_in? %>
 <div class="bg-gray-100 flex pt-12 pl-40 pr-24">
   <div class="w-1/4 pr-4">
   </div>
@@ -40,40 +41,51 @@
     <div class="mb-4 rounded-lg w-full">
       <h3 class="text-black font-bold tracking-wide mb-4">Post a comment</h3>
       <div class="border-r border-b border-l border-grey-light lg:border-l-0 lg:border-t lg:border-grey-light bg-white rounded-b lg:rounded-b-none lg:rounded-r p-4 flex flex-col justify-between leading-normal">
-        <% if logged_in? %>
-          <%= render 'comments/form', comment: @comment, post_id: @post.id %>
-        <% end %>
+        <%= render 'comments/form', comment: @comment, post_id: @post.id %>
       </div>
     </div>
   </div>
 </div>
+<% end %>
 
-<div class="bg-gray-100 flex pt-12 pl-40 pr-24">
-  <div class="w-1/4 pr-4">
-  </div>
-  <div class="max-w-2xl w-3/4">
-    <div class="mb-4 rounded-lg w-full">
-      <h3 class="text-black font-bold tracking-wide mb-4">Comments</h3>
-      <% @post.comments.each do |comment| %>
-        <div class="flex p-6 bg-white rounded-lg shadow-xl">
-          <div class="flex-shrink-0">
-            <img class="h-12 w-12 rounded-full" src="https://pbs.twimg.com/profile_images/885868801232961537/b1F6H4KC_400x400.jpg" alt="User avatar">
-          </div>
-          <div class="ml-6 pt-1">
-            <p class="text-base leading-normal mb-2"><%= comment.comment %></p>
-            <h4 class="text-sm text-gray-900 leading-tight"><%= comment.user.username %> <span class="text-gray-500 text-xs"><%= comment.updated_at %></span></h4>
-            <div class="flex-col">
-              <% if logged_in? %>
-                <% if current_user.id == comment.user_id %>
-                  <%= link_to 'Edit', edit_comment_path(comment), class: "text-xs hover:underline" %>
-                  <%= link_to 'Destroy', comment, method: :delete, data: { confirm: 'Are you sure you want to delete this comment?' }, class: "text-xs hover:underline" %>
+<% if @post.comments.present? %>
+  <div class="bg-gray-100 flex pt-12 pl-40 pr-24">
+    <div class="w-1/4 pr-4">
+    </div>
+    <div class="max-w-2xl w-3/4">
+      <div class="mb-4 rounded-lg w-full">
+        <h3 class="text-black font-bold tracking-wide mb-4">Comments</h3>
+        <% @post.comments.each do |comment| %>
+          <div class="flex p-6 bg-white rounded-lg shadow-xl">
+            <div class="flex-shrink-0">
+              <img class="h-12 w-12 rounded-full" src="https://pbs.twimg.com/profile_images/885868801232961537/b1F6H4KC_400x400.jpg" alt="User avatar">
+            </div>
+            <div class="ml-6 pt-1">
+              <p class="text-base leading-normal mb-2"><%= comment.comment %></p>
+              <h4 class="text-sm text-gray-900 leading-tight"><%= comment.user.username %> <span class="text-gray-500 text-xs"><%= comment.updated_at %></span></h4>
+              <div class="flex-col">
+                <% if logged_in? %>
+                  <% if current_user.id == comment.user_id %>
+                    <%= link_to 'Edit', edit_comment_path(comment), class: "text-xs hover:underline" %>
+                    <%= link_to 'Destroy', comment, method: :delete, data: { confirm: 'Are you sure you want to delete this comment?' }, class: "text-xs hover:underline" %>
+                  <% end %>
                 <% end %>
-              <% end %>
+              </div>
             </div>
           </div>
-        </div>
-        <br/>
-      <% end %>
+          <br/>
+        <% end %>
+      </div>
     </div>
   </div>
-</div>
+<% else %>
+  <div class="bg-gray-100 flex pt-12 pl-40 pr-24">
+    <div class="w-1/4 pr-4">
+    </div>
+    <div class="max-w-2xl w-3/4">
+      <div class="mb-4 rounded-lg w-full">
+        <h3 class="text-black font-bold tracking-wide mb-4">0 Comments</h3>
+      </div>
+    </div>
+  </div>
+<% end %>

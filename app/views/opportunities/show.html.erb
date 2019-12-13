@@ -37,8 +37,10 @@
         <% if current_student.present? %>
           <%= link_to 'Apply', new_submission_path(opportunity_id: @opportunity.id, student_id: current_student.id), class: "mb-4 bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" %>
         <% end %>
-        <% if current_employer.businesses.ids.include?(@opportunity.business_id) %>
-          <%= link_to 'Edit', edit_opportunity_path(@opportunity), class: "mb-4 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" %>
+        <% if current_employer.present? %>
+          <% if current_employer.businesses.ids.include?(@opportunity.business_id) %>
+            <%= link_to 'Edit', edit_opportunity_path(@opportunity), class: "mb-4 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" %>
+          <% end %>
         <% end %>
       </div>
     </div>
