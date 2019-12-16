@@ -3,11 +3,10 @@
   <p class="whitespace-pre-line leading-relaxed tracking-wide">Studez is an online platform where students get to find job and internship opportunities available 
     for their student type portfolio. Each year, more than 20k students turn to this website to get work,
     with over 80,000 applications every month.</p>
-  <form class="flex mt-8 mb-8">
-    <input type="text" placeholder="Job Title or Keywords" class="shadow appearance-none border rounded w-full py-5 px-5 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" >
-    <input type="text" placeholder="Location" class="ml-2 shadow appearance-none border rounded w-full py-5 px-5 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" />
-    <button type="button" class="ml-2 bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">Search</button>
-  </form>
+  <%= form_tag(opportunities_path, method: :get, class: "flex mt-8 mb-8") do %>
+    <%= text_field_tag(:search_title, params[:search_title], placeholder: "Job Title or Keywords", class: "shadow appearance-none border rounded py-5 px-5 w-3/6 text-gray-700 leading-tight focus:outline-none focus:shadow-outline")%>
+    <%= submit_tag("Search", class: "ml-2 bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline")%>
+  <% end %>
   <p><b>Trending Keywords:</b> Designer, Developer, Web, Interns, Engineer, Nurse.</p>
 </div>
 

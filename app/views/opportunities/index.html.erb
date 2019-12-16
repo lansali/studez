@@ -1,12 +1,11 @@
 <p class="notice text-blue-500"><%= notice %></p>
 <div class="bg-gray-100 flex pt-12 pl-40 pr-24">
   <div class="w-1/4 pr-4">
-    <h3 class="tracking-wide mb-4">Search keywords</h3>
-    <input type="text" placeholder="By name" class="shadow appearance-none border rounded w-full py-3 px-3 mb-4 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" />
-    <h3 class="tracking-wide mb-4">Location</h3>
-    <input type="text" placeholder="By location" class="shadow appearance-none border rounded w-full py-3 px-3 mb-4 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" />
-    <h3 class="tracking-wide mb-4">Category</h3>
-    <input type="text" placeholder="By categories" class="shadow appearance-none border rounded w-full py-3 px-3 mb-4 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" />
+    <%= form_tag(opportunities_path, method: :get, class: "") do %>
+      <h3 class="tracking-wide mb-4">Search by Job title</h3>
+      <%= text_field_tag(:search_title, params[:search_title], placeholder: "By name", class: "shadow appearance-none border rounded w-full py-3 px-3 mb-4 text-gray-700 leading-tight focus:outline-none focus:shadow-outline")%>
+      <%= submit_tag("Search", class: "ml-2 bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline")%>
+    <% end %>
   </div>
   <div class="w-3/4">
     <h3 class="tracking-wide mb-4">Your Selected</h3>

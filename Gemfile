@@ -29,7 +29,8 @@ gem 'image_processing', '~> 1.2'
 gem 'will_paginate', '~> 3.1.0'
 
 # Text Search
-gem 'redi_search'
+gem 'elasticsearch-model'
+gem 'elasticsearch-rails'
 
 # Dummy data
 gem 'faker'

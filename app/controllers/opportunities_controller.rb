@@ -5,7 +5,11 @@ class OpportunitiesController < ApplicationController
   # GET /opportunities
   # GET /opportunities.json
   def index
-    @opportunities = Opportunity.paginate(page: params[:page], per_page: 7)
+    if params[:search_title].present?
+      @opportunities = Opportunity.search(params[:search_title]).records.paginate(page: params[:page], per_page: 7)
+    else
+      @opportunities = Opportunity.paginate(page: params[:page], per_page: 7)
+    end
   end
 
   # GET /opportunities/1
