@@ -6,7 +6,7 @@ class OpportunitiesController < ApplicationController
   # GET /opportunities.json
   def index
     if params[:search_title].present?
-      @opportunities = Opportunity.search(params[:search_title]).records.paginate(page: params[:page], per_page: 7)
+      @opportunities = Opportunity.where('name LIKE ?', "%#{params[:search_title]}%").paginate(page: params[:page], per_page: 7)
     else
       @opportunities = Opportunity.paginate(page: params[:page], per_page: 7)
     end

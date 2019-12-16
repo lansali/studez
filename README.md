@@ -10,11 +10,8 @@ To spin up the app use
 Visit `http://localhost:5000/` where the app is live.
 
 ## Resetting the application
-In 3 separate terminals run these commands in their order:
-- `redis-server`
-- `elasticsearch`
+Run:
 - `rake db:drop && rake db:setup`
-Then turn off redis and elasticsearch.
 
 ## Author
 Sylvance Kerandi

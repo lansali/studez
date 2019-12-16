@@ -1,0 +1,4 @@
+web: bundle exec puma -C config/puma.rb
+webpacker: ./bin/webpack-dev-server
+redis: [[ $(lsof -i :6379) ]] && tail -f /dev/null || redis-server /usr/local/etc/redis.conf
+elastic-search: elasticsearch
