@@ -1,10 +1,14 @@
 /* Pagination styling */
 .pagination {
-    @apply flex bg-gray-300 text-center text-gray-600 h-12 mb-4 px-6 py-3 pr-24 rounded;
+    @apply flex max-w-3xl bg-gray-300 text-center text-gray-600 h-12 mb-4 px-6 py-3 pr-24 rounded;
 }
 
 .pagination > a:not(.next_page):not(.previous_page), .pagination > em {
     @apply flex-auto  h-6 rounded text-center
+}
+
+.pagination > .current {
+    @apply bg-blue-500 text-white;
 }
 
 .pagination > a:not(.next_page):not(.previous_page):hover, .pagination > em:hover {
