@@ -5,8 +5,11 @@ class OpportunitiesController < ApplicationController
   # GET /opportunities
   # GET /opportunities.json
   def index
+    @selected_tags = []
     if params[:search_title].present?
       @opportunities = Opportunity.where('name LIKE ?', "%#{params[:search_title]}%").paginate(page: params[:page], per_page: 7)
+    elsif params[:search_category].present?
+      @opportunities = Opportunity.where('category LIKE ?', "%#{params[:search_category]}%").paginate(page: params[:page], per_page: 7)
     else
       @opportunities = Opportunity.paginate(page: params[:page], per_page: 7)
     end

@@ -14,6 +14,9 @@
 
 require 'faker'
 opportunity_ids = []
+categories = ['Design', 'IT', 'Engineering', 'Education', 'Business', 'Medicine', 'Agriculture']
+employer_number = 1
+student_number = 1
 
 81.times do
     user = User.create( 
@@ -39,19 +42,24 @@ opportunity_ids = []
             location: Faker::Nation.capital_city
         )
 
-        5.times do
+        counter = 0
+        7.times do
             opportunity = Opportunity.create(
                 business_id: business.id,
                 name: Faker::Job.title,
                 description: Faker::TvShows::HowIMetYourMother.quote,
                 location: Faker::Nation.capital_city,
+                category: categories[counter],
                 requirements: Faker::TvShows::GameOfThrones.quote,
                 other: Faker::Marketing.buzzwords,
                 deadline: Faker::Date.forward(days: 15)
             )
-            # opportunity_ids << opportunity.id
+            opportunity_ids << opportunity.id
+            counter = counter + 1
         end
     end
+    puts "Creating employer #{employer_number}/81"
+    employer_number = employer_number + 1
 end
 
 50.times do
@@ -73,12 +81,12 @@ end
         expected_graduation_year: Faker::Date.in_date_period
     )
 
-    # opportunity_ids.each do |opportunity_id|
-    #     Submission.create(
-    #         opportunity_id: opportunity_id,
-    #         student_id: student.id,
-    #         cover_letter: "To B uploaded",
-    #         cv: "To B uploaded"
-    #     )
-    # end
+    opportunity_ids.each do |opportunity_id|
+        Submission.create(
+            opportunity_id: opportunity_id,
+            student_id: student.id
+        )
+    end
+    puts "Creating student #{student_number}/50"
+    student_number = student_number + 1
 end
