@@ -4,7 +4,11 @@ class BusinessesController < ApplicationController
   # GET /businesses
   # GET /businesses.json
   def index
-    @businesses = Business.paginate(page: params[:page], per_page: 7)
+    if params[:target_employer].present?
+      @businesses = Business.where(employer_id: params[:target_employer]).paginate(page: params[:page], per_page: 7)
+    else
+      @businesses = Business.paginate(page: params[:page], per_page: 7)
+    end
   end
 
   # GET /businesses/1

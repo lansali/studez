@@ -11,6 +11,7 @@
 
 #   movies = Movie.create([{ name: Faker::Name.name }, { name: Faker::Name.name }])
 #   Character.create(name: Faker::Name.name, movie: movies.first)
+# password_digest: Faker::Internet.password,
 
 require 'faker'
 opportunity_ids = []
@@ -19,14 +20,16 @@ employer_number = 1
 student_number = 1
 
 81.times do
-    user = User.create( 
+    user = User.new(
         email: Faker::Internet.unique.free_email, 
-        password_digest: Faker::Internet.password,
+        password: "password", 
+        password_confirmation: "password",
         username: Faker::Name.unique.name,
         first_name: Faker::Name.first_name,
         middle_name: Faker::Name.middle_name,
-        last_name: Faker::Name.last_name,
-        employer: true )
+        last_name: Faker::Name.last_name
+    )
+    user.save
 
     employer = Employer.create(
         user_id: user.id,
@@ -63,14 +66,16 @@ student_number = 1
 end
 
 50.times do
-    user = User.create( 
+    user = User.new(
         email: Faker::Internet.unique.free_email, 
-        password_digest: Faker::Internet.password,
+        password: "password", 
+        password_confirmation: "password",
         username: Faker::Name.unique.name,
         first_name: Faker::Name.first_name,
         middle_name: Faker::Name.middle_name,
-        last_name: Faker::Name.last_name,
-        student: true )
+        last_name: Faker::Name.last_name
+    )
+    user.save
 
     student = Student.create(
         user_id: user.id,
