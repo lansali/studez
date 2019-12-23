@@ -22,6 +22,7 @@ class SubmissionsController < ApplicationController
   def new
     @opportunity_id = params[:opportunity_id]
     @student_id = params[:student_id]
+    @resume_id = Resume.where(student_id: params[:student_id]).first.id
     @submission = Submission.new
   end
 
@@ -33,8 +34,6 @@ class SubmissionsController < ApplicationController
   # POST /submissions.json
   def create
     @submission = Submission.new(submission_params)
-    @submission.cv.attach(params[:submission][:cv])
-    @submission.cover_letter.attach(params[:submission][:cover_letter])
 
     respond_to do |format|
       if @submission.save
@@ -64,11 +63,9 @@ class SubmissionsController < ApplicationController
   # DELETE /submissions/1
   # DELETE /submissions/1.json
   def destroy
-    @submission.cv.purge_later
-    @submission.cover_letter.purge_later
     @submission.destroy
     respond_to do |format|
-      format.html { redirect_to submissions_url, notice: 'Submission was successfully destroyed.' }
+      format.html { redirect_to submissions_url(target_student: current_student.id), notice: 'Submission was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
@@ -81,6 +78,6 @@ class SubmissionsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def submission_params
-      params.require(:submission).permit(:opportunity_id, :student_id, :cover_letter, :cv)
+      params.require(:submission).permit(:opportunity_id, :student_id, :resume_id, :cover_letter)
     end
 end

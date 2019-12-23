@@ -17,15 +17,17 @@
 
 			<div class="pt-12 pb-8">
 				<% if current_user.id == @user.id %>
-					<%= link_to 'Edit', edit_user_path(@user), class: "bg-teal-700 hover:bg-teal-900 text-white font-bold py-2 px-4 rounded-full" %>
+					<%= link_to 'Edit Profile', edit_user_path(@user), class: "bg-teal-700 hover:bg-teal-900 text-white font-bold py-2 px-4 rounded-full" %>
 					<% if current_student.present? %>
 						<%= link_to 'My job applications', submissions_path(target_student: current_student.id), class: "bg-blue-700 hover:bg-blue-900 text-white font-bold py-2 px-4 rounded-full" %>
 					<% end %>
 					<% if current_employer.present? %>
 						<%= link_to 'My businesses', businesses_path(target_employer: current_employer.id), class: "bg-blue-700 hover:bg-blue-900 text-white font-bold py-2 px-4 rounded-full" %>
 					<% end %>
+					<% if current_user.admin == true %>
+						<%= link_to 'Explore all Users', users_path, class: "bg-blue-700 hover:bg-blue-900 text-white font-bold py-2 px-4 rounded-full" %>
+					<% end %>
 				<% end %>
-				<%= link_to 'Explore all Users', users_path, class: "bg-blue-700 hover:bg-blue-900 text-white font-bold py-2 px-4 rounded-full" %>
 			</div>
 
 			<div class="mt-6 pb-16 lg:pb-0 w-4/5 lg:w-full mx-auto flex flex-wrap items-center justify-between">

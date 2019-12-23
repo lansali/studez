@@ -20,14 +20,17 @@ employer_number = 1
 student_number = 1
 
 81.times do
+    first_name  = Faker::Name.first_name
+    middle_name = Faker::Name.middle_name
+    last_name   = Faker::Name.last_name
     user = User.new(
         email: Faker::Internet.unique.free_email, 
         password: "password", 
         password_confirmation: "password",
-        username: Faker::Name.unique.name,
-        first_name: Faker::Name.first_name,
-        middle_name: Faker::Name.middle_name,
-        last_name: Faker::Name.last_name
+        username: first_name + middle_name + last_name,
+        first_name: first_name,
+        middle_name: middle_name,
+        last_name: last_name
     )
     user.save
 
@@ -66,14 +69,18 @@ student_number = 1
 end
 
 50.times do
+    first_name  = Faker::Name.first_name
+    middle_name = Faker::Name.middle_name
+    last_name   = Faker::Name.last_name
+    full_name   = first_name + middle_name + last_name
     user = User.new(
         email: Faker::Internet.unique.free_email, 
         password: "password", 
         password_confirmation: "password",
-        username: Faker::Name.unique.name,
-        first_name: Faker::Name.first_name,
-        middle_name: Faker::Name.middle_name,
-        last_name: Faker::Name.last_name
+        username: full_name,
+        first_name: first_name,
+        middle_name: middle_name,
+        last_name: last_name
     )
     user.save
 
@@ -86,12 +93,38 @@ end
         expected_graduation_year: Faker::Date.in_date_period
     )
 
+    resume = Resume.create(
+        student_id: student.id,
+        profile_picture: Faker::Placeholdit.image(size: '50x50', format: 'jpg', background_color: 'ffffff'),
+        full_name: full_name,
+        tagline: Faker::TvShows::HowIMetYourMother.quote,
+        phone_number: "This is a placeholder",
+        physical_address: "This is a placeholder",
+        email_adress: Faker::Internet.unique.free_email,
+        work_experience: "This is a placeholder",
+        education: "This is a placeholder",
+        certifications: "This is a placeholder",
+        skills: "This is a placeholder",
+        languages: "This is a placeholder",
+        past_projects: "This is a placeholder",
+        workshops: "This is a placeholder",
+        volunteerships: "This is a placeholder",
+        relevant_links: "This is a placeholder",
+        extra_columns: "This is a placeholder"
+    )
+
+    jobs_size = opportunity_ids.size
+    job_number = 1
+
     opportunity_ids.each do |opportunity_id|
         Submission.create(
             opportunity_id: opportunity_id,
-            student_id: student.id
+            student_id: student.id,
+            resume_id: resume.id,
+            cover_letter: "Hello I am writing this to apply to this company for this position."
         )
+        puts "Student[#{student_number}/50]: Applying for job #{job_number}/#{jobs_size}"
+        job_number = job_number + 1
     end
-    puts "Creating student #{student_number}/50"
     student_number = student_number + 1
 end

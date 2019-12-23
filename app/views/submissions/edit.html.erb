@@ -1,6 +1,7 @@
-<h1>Editing Submission</h1>
-
-<%= render 'form', submission: @submission, opportunity_id: @submission.opportunity_id, student_id: @submission.student_id %>
-
-<%= link_to 'Show', @submission %> |
-<%= link_to 'Back', submissions_path %>
+<div class="bg-gray-200 h-full px-64 py-32 -mb-64">
+    <%= render 'form', submission: @submission, opportunity_id: @submission.opportunity_id, student_id: @submission.student_id, resume_id: @submission.resume_id %>
+    <div class="bg-white shadow py-2 px-4 text-center mt-4 w-1/2 mx-auto">
+        <%= link_to 'Show submission', @submission, class: "text-blue-400 hover:underline" %> |
+        <%= link_to 'Back to My submissions', submissions_path(target_student: @submission.student_id), class: "text-pink-400 hover:underline" %>
+    </div>
+</div>

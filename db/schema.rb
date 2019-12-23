@@ -98,6 +98,29 @@ ActiveRecord::Schema.define(version: 2019_11_27_134205) do
     t.index ["author_id"], name: "index_posts_on_author_id"
   end
 
+  create_table "resumes", force: :cascade do |t|
+    t.bigint "student_id", null: false
+    t.string "profile_picture"
+    t.string "full_name"
+    t.string "tagline"
+    t.string "phone_number"
+    t.string "physical_address"
+    t.string "email_adress"
+    t.string "work_experience"
+    t.string "education"
+    t.string "certifications"
+    t.string "skills"
+    t.string "languages"
+    t.string "past_projects"
+    t.string "workshops"
+    t.string "volunteerships"
+    t.string "relevant_links"
+    t.string "extra_columns"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["student_id"], name: "index_resumes_on_student_id"
+  end
+
   create_table "students", force: :cascade do |t|
     t.bigint "user_id", null: false
     t.string "institution_name"
@@ -114,11 +137,12 @@ ActiveRecord::Schema.define(version: 2019_11_27_134205) do
   create_table "submissions", force: :cascade do |t|
     t.bigint "opportunity_id", null: false
     t.bigint "student_id", null: false
-    t.string "cover_letter"
-    t.string "cv"
+    t.text "cover_letter"
+    t.bigint "resume_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["opportunity_id"], name: "index_submissions_on_opportunity_id"
+    t.index ["resume_id"], name: "index_submissions_on_resume_id"
     t.index ["student_id"], name: "index_submissions_on_student_id"
   end
 
@@ -145,7 +169,9 @@ ActiveRecord::Schema.define(version: 2019_11_27_134205) do
   add_foreign_key "employers", "users"
   add_foreign_key "opportunities", "businesses"
   add_foreign_key "posts", "users", column: "author_id"
+  add_foreign_key "resumes", "students"
   add_foreign_key "students", "users"
   add_foreign_key "submissions", "opportunities"
+  add_foreign_key "submissions", "resumes"
   add_foreign_key "submissions", "students"
 end

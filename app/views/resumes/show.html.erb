@@ -1,0 +1,89 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Student:</strong>
+  <%= @resume.student_id %>
+</p>
+
+<p>
+  <strong>Profile picture:</strong>
+  <%= @resume.profile_picture %>
+</p>
+
+<p>
+  <strong>Full name:</strong>
+  <%= @resume.full_name %>
+</p>
+
+<p>
+  <strong>Tagline:</strong>
+  <%= @resume.tagline %>
+</p>
+
+<p>
+  <strong>Phone number:</strong>
+  <%= @resume.phone_number %>
+</p>
+
+<p>
+  <strong>Physical address:</strong>
+  <%= @resume.physical_address %>
+</p>
+
+<p>
+  <strong>Email adress:</strong>
+  <%= @resume.email_adress %>
+</p>
+
+<p>
+  <strong>Work experience:</strong>
+  <%= @resume.work_experience %>
+</p>
+
+<p>
+  <strong>Education:</strong>
+  <%= @resume.education %>
+</p>
+
+<p>
+  <strong>Certifications:</strong>
+  <%= @resume.certifications %>
+</p>
+
+<p>
+  <strong>Skills:</strong>
+  <%= @resume.skills %>
+</p>
+
+<p>
+  <strong>Languages:</strong>
+  <%= @resume.languages %>
+</p>
+
+<p>
+  <strong>Past projects:</strong>
+  <%= @resume.past_projects %>
+</p>
+
+<p>
+  <strong>Workshops:</strong>
+  <%= @resume.workshops %>
+</p>
+
+<p>
+  <strong>Volunteerships:</strong>
+  <%= @resume.volunteerships %>
+</p>
+
+<p>
+  <strong>Relevant links:</strong>
+  <%= @resume.relevant_links %>
+</p>
+
+<p>
+  <strong>Extra columns:</strong>
+  <%= @resume.extra_columns %>
+</p>
+
+<%= link_to 'Edit', edit_resume_path(@resume) %> |
+<%= link_to 'Back', resumes_path %>

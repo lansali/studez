@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :resumes
   resources :comments
   resources :submissions
   resources :businesses

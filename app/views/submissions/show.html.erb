@@ -1,40 +1,37 @@
-<p class="notice text-blue-500"><%= notice %></p>
 
-<p>
-  <strong>
-    <%= @submission.opportunity.name %> | 
-    <%= @submission.opportunity.business.employer.id %>
-  </strong>
-</p>
+<div class="bg-gray-200 h-full px-64 py-32 -mb-64">
+    <% if notice.present? %>
+      <p class="notice text-blue-500 bg-white shadow py-2 px-4 text-center mt-4 w-1/2 mx-auto"><%= notice %></p>
+    <% end %>
+    <div class="bg-white shadow py-2 px-4 text-center mt-4 w-1/2 mx-auto">
+      <p>
+        <strong>
+          <%= @submission.opportunity.name %> | 
+          @<%= @submission.opportunity.business_id %>
+        </strong>
+      </p>
+      <p>
+        <strong>Posted by: </strong><%= @submission.opportunity.business.employer.user.username %>
+      </p>
+      <p>
+        <strong>Location: </strong><%= @submission.opportunity.location %>
+      </p>
+      <p>
+        <strong>Applicant:</strong>
+        <%= @submission.student.user.username %>
+      </p>
 
-<p>
-  <strong>Student applicant:</strong>
-  <%= @submission.student.user.username %>
-</p>
-
-<% if @submission.cv.attached? == false %>
-  <p>No cv attached</p>
-<% elsif @submission.cv.previewable? %>
-  <%= link_to(image_tag(@submission.cv.preview(resize: "50x50>")), rails_blob_path(@submission.cv, disposition: "attachment"))
-%>
-<% elsif @submission.cv.variable? %>
-  <%= link_to(image_tag(@submission.cv.variant(resize: "50x50")), rails_blob_path(@submission.cv, disposition: "attachment"))%>
-<% else %>
-  <%= link_to "Download CV", rails_blob_path(@submission.cv, disposition: "attachment") %>
-<% end %>
-<br/>
-
-<% if @submission.cover_letter.attached? == false %>
-  <p>No cover letter attached</p>
-<% elsif @submission.cover_letter.previewable? %>
-  <%= link_to(image_tag(@submission.cover_letter.preview(resize: "50x50>")), rails_blob_path(@submission.cover_letter, disposition: "attachment"))
-%>
-<% elsif @submission.cover_letter.variable? %>
-  <%= link_to(image_tag(@submission.cover_letter.variant(resize: "50x50")), rails_blob_path(@submission.cover_letter, disposition: "attachment"))%>
-<% else %>
-  <%= link_to "Download cover letter", rails_blob_path(@submission.cv, disposition: "attachment") %>
-<% end %>
-<br/>
-
-<%= link_to 'Edit', edit_submission_path(@submission) %> |
-<%= link_to 'Back', submissions_path %>
+      <p>
+        <%= @submission.cover_letter %>
+      </p>
+      <p>
+        <strong>Resume:</strong>
+        <br/>
+        <%= @submission.resume %>
+      </p>
+    </div>
+    <div class="bg-white shadow py-2 px-4 text-center mt-4 w-1/2 mx-auto">
+      <%= link_to 'Edit cover letter', edit_submission_path(@submission), class: "text-blue-400 hover:underline" %> |
+      <%= link_to 'Back to my submissions', submissions_path(target_student: @submission.student_id), class: "text-pink-400 hover:underline" %>
+    </div>
+</div>

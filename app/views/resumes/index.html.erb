@@ -1,0 +1,59 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Resumes</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Student</th>
+      <th>Profile picture</th>
+      <th>Full name</th>
+      <th>Tagline</th>
+      <th>Phone number</th>
+      <th>Physical address</th>
+      <th>Email adress</th>
+      <th>Work experience</th>
+      <th>Education</th>
+      <th>Certifications</th>
+      <th>Skills</th>
+      <th>Languages</th>
+      <th>Past projects</th>
+      <th>Workshops</th>
+      <th>Volunteerships</th>
+      <th>Relevant links</th>
+      <th>Extra columns</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @resumes.each do |resume| %>
+      <tr>
+        <td><%= resume.student_id %></td>
+        <td><%= resume.profile_picture %></td>
+        <td><%= resume.full_name %></td>
+        <td><%= resume.tagline %></td>
+        <td><%= resume.phone_number %></td>
+        <td><%= resume.physical_address %></td>
+        <td><%= resume.email_adress %></td>
+        <td><%= resume.work_experience %></td>
+        <td><%= resume.education %></td>
+        <td><%= resume.certifications %></td>
+        <td><%= resume.skills %></td>
+        <td><%= resume.languages %></td>
+        <td><%= resume.past_projects %></td>
+        <td><%= resume.workshops %></td>
+        <td><%= resume.volunteerships %></td>
+        <td><%= resume.relevant_links %></td>
+        <td><%= resume.extra_columns %></td>
+        <td><%= link_to 'Show', resume %></td>
+        <td><%= link_to 'Edit', edit_resume_path(resume) %></td>
+        <td><%= link_to 'Destroy', resume, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Resume', new_resume_path %>

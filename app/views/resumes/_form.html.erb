@@ -1,0 +1,102 @@
+<%= form_with(model: resume, local: true) do |form| %>
+  <% if resume.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(resume.errors.count, "error") %> prohibited this resume from being saved:</h2>
+
+      <ul>
+        <% resume.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :student_id %>
+    <%= form.text_field :student_id %>
+  </div>
+
+  <div class="field">
+    <%= form.label :profile_picture %>
+    <%= form.text_field :profile_picture %>
+  </div>
+
+  <div class="field">
+    <%= form.label :full_name %>
+    <%= form.text_field :full_name %>
+  </div>
+
+  <div class="field">
+    <%= form.label :tagline %>
+    <%= form.text_field :tagline %>
+  </div>
+
+  <div class="field">
+    <%= form.label :phone_number %>
+    <%= form.text_field :phone_number %>
+  </div>
+
+  <div class="field">
+    <%= form.label :physical_address %>
+    <%= form.text_field :physical_address %>
+  </div>
+
+  <div class="field">
+    <%= form.label :email_adress %>
+    <%= form.text_field :email_adress %>
+  </div>
+
+  <div class="field">
+    <%= form.label :work_experience %>
+    <%= form.text_field :work_experience %>
+  </div>
+
+  <div class="field">
+    <%= form.label :education %>
+    <%= form.text_field :education %>
+  </div>
+
+  <div class="field">
+    <%= form.label :certifications %>
+    <%= form.text_field :certifications %>
+  </div>
+
+  <div class="field">
+    <%= form.label :skills %>
+    <%= form.text_field :skills %>
+  </div>
+
+  <div class="field">
+    <%= form.label :languages %>
+    <%= form.text_field :languages %>
+  </div>
+
+  <div class="field">
+    <%= form.label :past_projects %>
+    <%= form.text_field :past_projects %>
+  </div>
+
+  <div class="field">
+    <%= form.label :workshops %>
+    <%= form.text_field :workshops %>
+  </div>
+
+  <div class="field">
+    <%= form.label :volunteerships %>
+    <%= form.text_field :volunteerships %>
+  </div>
+
+  <div class="field">
+    <%= form.label :relevant_links %>
+    <%= form.text_field :relevant_links %>
+  </div>
+
+  <div class="field">
+    <%= form.label :extra_columns %>
+    <%= form.text_field :extra_columns %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>
