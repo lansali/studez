@@ -7,6 +7,9 @@ ruby '2.5.1'
 gem 'rails', '~> 6.0.0'
 # Use postgresql as the database for Active Record
 gem 'pg', '>= 0.18', '< 2.0'
+gem 'virtus', '~> 1.0', '>= 1.0.5'
+gem 'strong_parameters'
+gem 'activerecord-postgres-hstore' # for hstore
 # Use Puma as the app server
 gem 'puma', '~> 3.12'
 # Use SCSS for stylesheets
