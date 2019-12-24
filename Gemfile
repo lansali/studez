@@ -38,6 +38,7 @@ gem 'will_paginate', '~> 3.1.0'
 gem 'faker'
 
 gem 'csv'
+gem 'datagrid', '~> 1.5', '>= 1.5.9'
 
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.2', require: false
