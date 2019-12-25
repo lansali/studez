@@ -11,6 +11,7 @@ class CreateUsers < ActiveRecord::Migration[6.0]
       t.boolean :moderator
       t.boolean :employer
       t.boolean :student
+      t.hstore :settings
 
       t.timestamps
     end
