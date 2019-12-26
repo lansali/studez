@@ -7,10 +7,7 @@ class CreateUsers < ActiveRecord::Migration[6.0]
       t.string :first_name
       t.string :middle_name
       t.string :last_name
-      t.boolean :admin
-      t.boolean :moderator
-      t.boolean :employer
-      t.boolean :student
+      t.text   :bio
       t.hstore :settings
 
       t.timestamps

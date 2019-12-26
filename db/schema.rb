@@ -13,6 +13,7 @@
 ActiveRecord::Schema.define(version: 2019_11_27_134205) do
 
   # These are extensions that must be enabled in order to support this database
+  enable_extension "hstore"
   enable_extension "plpgsql"
 
   create_table "action_text_rich_texts", force: :cascade do |t|
@@ -157,6 +158,7 @@ ActiveRecord::Schema.define(version: 2019_11_27_134205) do
     t.boolean "moderator"
     t.boolean "employer"
     t.boolean "student"
+    t.hstore "settings"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["email", "username"], name: "index_users_on_email_and_username", unique: true

@@ -16,6 +16,7 @@
 require 'faker'
 opportunity_ids = []
 categories = ['Design', 'IT', 'Engineering', 'Education', 'Business', 'Medicine', 'Agriculture']
+courses_array = ['Masters in Business studies', 'BSc. Comp Sci', 'BSc. Astro', 'BSc. Mathematics', 'BA Pyschology', 'BSc. Engineering', 'Diploma in Further studies', 'Certificate in culinary techniques']
 employer_number = 1
 student_number = 1
 
@@ -30,7 +31,10 @@ student_number = 1
         username: first_name + middle_name + last_name,
         first_name: first_name,
         middle_name: middle_name,
-        last_name: last_name
+        last_name: last_name,
+        settings: {
+            privacy: 'y'
+        }
     )
     user.save
 
@@ -68,7 +72,7 @@ student_number = 1
     employer_number = employer_number + 1
 end
 
-50.times do
+25000.times do
     first_name  = Faker::Name.first_name
     middle_name = Faker::Name.middle_name
     last_name   = Faker::Name.last_name
@@ -80,7 +84,10 @@ end
         username: full_name,
         first_name: first_name,
         middle_name: middle_name,
-        last_name: last_name
+        last_name: last_name,
+        settings: {
+            privacy: 'n'
+        }
     )
     user.save
 
@@ -90,6 +97,7 @@ end
         bio: Faker::TvShows::HowIMetYourMother.quote,
         interests: Faker::Superhero.name,
         year_started_course: Faker::Date.in_date_period,
+        course_name: courses_array.sample,
         expected_graduation_year: Faker::Date.in_date_period
     )
 
@@ -113,17 +121,54 @@ end
         extra_columns: "This is a placeholder"
     )
 
-    jobs_size = opportunity_ids.size
+    rand_ids = rand.to_s.split("")[2..-1]
+    jobs_size = rand_ids.size
     job_number = 1
 
-    opportunity_ids.each do |opportunity_id|
+    rand_ids.each_with_index do |rand_id, index|
+        next1 = index < jobs_size - 1 ? rand_ids[index+1] : index.to_s
+        next2 = index < jobs_size - 2 ? rand_ids[index+2] : index.to_s
+        if rand_id.to_i == 8
+            opportunity_id = next1 + rand_id + rand_id
+        elsif rand_id.to_i == 7
+            opportunity_id = rand_id + rand_id + rand_id
+        elsif rand_id.to_i == 6
+            opportunity_id = rand_id + next2 + rand_id
+        elsif rand_id.to_i == 5
+            opportunity_id = rand_id + next1
+        elsif rand_id.to_i == 4
+            opportunity_id = rand_id + next2
+        elsif rand_id.to_i == 3
+            opportunity_id = rand_id + next1 + '3'
+        elsif rand_id.to_i == 2
+            opportunity_id = rand_id + next1 + next2
+        else
+            opportunity_id = '10' + index.to_s + rand_id
+        end
+
         Submission.create(
-            opportunity_id: opportunity_id,
+            opportunity_id: opportunity_id.to_i,
             student_id: student.id,
             resume_id: resume.id,
-            cover_letter: "Hello I am writing this to apply to this company for this position."
+            cover_letter: "Greetings,
+                I am applying for the software engineer role.
+                I came across it on Linkedin. I have interacted with Studez
+                and I think it is a wonderful product. I am looking to steer
+                my career towards building things that impact the education sector
+                and I think I will be a good fit in your team.
+                I once worked with Namely,  an NYC startup, as a remote contractor
+                on their data engineering team. I developed kafka admin tools that
+                enabled other developers in the team interface with the underlying
+                event-gateway messaging streams. I introduced changes to the reports
+                dashboard in their core Ruby on Rails application. I developed streams
+                for their kafka event-gateway.  I worked on a couple of micro-services
+                along the way namely C# and Go; these were for their payroll system.
+                I bring with me 3 years of work experience and 2 years of internship
+                experience before that. I have worked for C4DLab, Andela and
+                Namely(New York Based Series D startup).
+                Looking forward to your reply. Kind regards."
         )
-        puts "Student[#{student_number}/50]: Applying for job #{job_number}/#{jobs_size}"
+        puts "Student[#{student_number}/25000]: Applying for job #{job_number}/#{jobs_size}"
         job_number = job_number + 1
     end
     student_number = student_number + 1

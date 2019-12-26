@@ -1,15 +1,15 @@
 module UsersHelper
     def declare_user_type
         if user_type == true
-            @user.employer = true
+            @user.settings['account_type'] = 'business'
         else
-            @user.student = true
+            @user.settings['account_type'] = 'student'
         end
     end
 
     def save_associatied_objects
         if user_type == true
-            save_associated_employer
+            save_associated_business
         else
             save_associated_student
         end
@@ -20,8 +20,8 @@ module UsersHelper
         @associated_student.save
     end
 
-    def save_associated_employer
-        @associated_employer = Employer.new(user_id: @user.id)
-        @associated_employer.save
+    def save_associated_business
+        @associated_business = Employer.new(user_id: @user.id)
+        @associated_business.save
     end
 end

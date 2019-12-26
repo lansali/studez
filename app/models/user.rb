@@ -1,6 +1,6 @@
 class User < ApplicationRecord
   has_secure_password
-  store_accessor :settings, :privacy
+  store_accessor :settings, :privacy, :account
 
   has_many :authored_posts, :class_name => 'Post', :foreign_key => 'author_id', dependent: :destroy
   has_one :student, dependent: :destroy
@@ -11,6 +11,8 @@ class User < ApplicationRecord
   validates :username, presence: true, uniqueness: true
   validates :privacy, presence: true
   validates :privacy, inclusion: { in: %w(y n) }
+  validates :account_type, presence: true
+  validates :account_type, inclusion: { in: %w(admin, moderator, business, student) }
 
   def self.is_public
     where("settings @> hstore(?, ?)",'privacy','n')

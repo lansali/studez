@@ -21,16 +21,13 @@
       <%= link_to "Post a job", new_opportunity_path, class: "ml-6 h-16 pt-6 text-sm text-center self-center" + current_class?(new_opportunity_path) %>
       <%= link_to "Find a job", opportunities_path, class: "ml-6 h-16 pt-6 text-sm text-center self-center" + current_class?(opportunities_path) %>
       <% if current_user.present? %>
-        <% if current_user.admin == true %>
+        <% if current_user.settings['account_type'] == 'admin' %>
           <%= link_to "Students", students_path, class: "ml-6 h-16 pt-6 text-sm text-center self-center" + current_class?(students_path) %>
           <%= link_to "Businesses", businesses_path, class: "ml-6 h-16 pt-6 text-sm text-center self-center" + current_class?(businesses_path) %>
         <% end %>
-        <% if current_user.moderator == true %>
+        <% if current_user.settings['account_type'] == 'moderator' %>
           <%= link_to "Post new blog", new_post_path, class: "ml-6 h-16 pt-6 text-sm text-center self-center" + current_class?(new_post_path) %>
         <% end %>
-        <a class="ml-6 h-16 pt-6 text-sm text-center self-center" href="#">
-          Notifications
-        </a>
       <% end %>
     </div>
     <div class="flex-1 flex justify-end">
@@ -47,9 +44,9 @@
   <div class="flex py-12 px-20" style="background-color: #242020ed; color: #5a5858;">
     <div class="flex-1">
       <p class="text-lg text-white mb-4">Quick links<p>
-      <p>Post a new job<p>
-      <p>Job listing<p>
-      <p>Employer listing<p>
+      <p class="hover:text-white hover:underline"><%= link_to "Post a new job", new_opportunity_path %></p>
+      <p class="hover:text-white hover:underline"><%= link_to "Job listing", opportunities_path %></p>
+      <p class="hover:text-white hover:underline"><%= link_to "Blogs", posts_path %></p>
     </div>
     <div class="flex-1">
       <p class="text-lg text-white mb-4">For Students<p>
@@ -59,18 +56,23 @@
     </div>
     <div class="flex-1">
       <p class="text-lg text-white mb-4">For employers<p>
-      <p>Post a new job<p>
-      <p>Candiate listing<p>
+      <p class="hover:text-white hover:underline"><%= link_to "Post a new job", new_opportunity_path %></p>
+      <p class="hover:text-white hover:underline"><%= link_to "Job listing", opportunities_path %></p>
     </div>
     <div class="flex-1">
       <p class="text-lg text-white mb-4">Newsletter<p>
       <p class="mb-4">Subscribe to Studez newsletter to get the latest jobs posted, candidates and other latests news. Stay updated<p>
-      <form class="flex justify-between">
-        <input type="text" placeholder="Enter your email address" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"/>
-        <button type="button" class="ml-2 bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
-          <i class="icon-rss"></i>
-        </button>
-      <form>
+      <% if current_user.present? %>
+        <form class="flex justify-between">
+          <input type="text" placeholder="Enter your email address" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"/>
+          <button type="button" class="ml-2 bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
+            <i class="icon-rss"></i>
+          </button>
+        <form>
+      <% else %>
+        <i class="icon-rss"></i> 
+        <%= link_to "Sign up to access the newsletter", signup_path, class: "ml-2 bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" %>
+      <% end %>
     </div>
   </div>
   <footer class="flex py-8 px-24" style="background-color: #1b1b1b; color: #5a5858;">

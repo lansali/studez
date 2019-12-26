@@ -10,7 +10,7 @@ class ApplicationController < ActionController::Base
 
     before_action :authenticate_request
 
-    DB_USER_ROLES = ['admin', 'employer', 'student', 'moderator'].freeze
+    DB_USER_ROLES = ['admin', 'business', 'student', 'moderator'].freeze
 
     def current_user
         if session[:user_id]

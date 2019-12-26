@@ -1,34 +1,30 @@
 
-<div class="bg-gray-200 h-full px-64 py-32 -mb-64">
+<div class="bg-gray-200 px-64 py-8">
     <% if notice.present? %>
       <p class="notice text-blue-500 bg-white shadow py-2 px-4 text-center mt-4 w-1/2 mx-auto"><%= notice %></p>
     <% end %>
     <div class="bg-white shadow py-2 px-4 text-center mt-4 w-1/2 mx-auto">
-      <p>
+      <p class="text-blue-600 font-bold">
         <strong>
           <%= @submission.opportunity.name %> | 
           @<%= @submission.opportunity.business_id %>
         </strong>
       </p>
-      <p>
+      <p class="text-xs">
         <strong>Posted by: </strong><%= @submission.opportunity.business.employer.user.username %>
       </p>
-      <p>
+      <p class="text-xs">
         <strong>Location: </strong><%= @submission.opportunity.location %>
       </p>
-      <p>
+      <p class="text-sm text-pink-700 mt-2">
         <strong>Applicant:</strong>
         <%= @submission.student.user.username %>
       </p>
 
-      <p>
+      <p class="text-gray-600 text-sm tracking-wide whitespace-pre my-2">
         <%= @submission.cover_letter %>
       </p>
-      <p>
-        <strong>Resume:</strong>
-        <br/>
-        <%= @submission.resume %>
-      </p>
+      <%= link_to 'View Resume', resume_path(@submission.resume), class: "text-teal-700 hover:underline" %>
     </div>
     <div class="bg-white shadow py-2 px-4 text-center mt-4 w-1/2 mx-auto">
       <%= link_to 'Edit cover letter', edit_submission_path(@submission), class: "text-blue-400 hover:underline" %> |
