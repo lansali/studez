@@ -78,9 +78,9 @@
   <footer class="flex py-8 px-24" style="background-color: #1b1b1b; color: #5a5858;">
     <p class="flex-1">© 2019 Studez. All Rights Reserved.</p>
     <div class="flex-6">
-      <a href="#" class="ml-6">Privacy Policy</a>
-      <a href="#" class="ml-6">Terms of Service</a>
-      <a href="#" class="ml-6">Security & Privacy</a>
+      <%= link_to "Privacy Policy", info_privacy_policy_path, class: "ml-6 hover:underline" %>
+      <%= link_to "Terms of Service", info_terms_of_service_path, class: "ml-6 hover:underline" %>
+      <%= link_to "Security Policy", info_security_policy_path, class: "ml-6 hover:underline" %>
       <a href="#" class="ml-6">English ></a>
     </div>
   </footer>

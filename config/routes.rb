@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  get 'info/privacy_policy'
+  get 'info/terms_of_service'
+  get 'info/security_policy'
   resources :resumes
   resources :comments
   resources :submissions
