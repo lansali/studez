@@ -1,4 +1,5 @@
 class OpportunitiesController < ApplicationController
+  include OpportunitiesHelper
   before_action :set_opportunity, only: [:show, :edit, :update, :destroy]
   skip_before_action :authenticate_request, only: [:index, :show]
 
@@ -6,13 +7,7 @@ class OpportunitiesController < ApplicationController
   # GET /opportunities.json
   def index
     @selected_tags = []
-    if params[:search_title].present?
-      @opportunities = Opportunity.where('name LIKE ?', "%#{params[:search_title]}%").paginate(page: params[:page], per_page: 7)
-    elsif params[:search_category].present?
-      @opportunities = Opportunity.where('category LIKE ?', "%#{params[:search_category]}%").paginate(page: params[:page], per_page: 7)
-    else
-      @opportunities = Opportunity.paginate(page: params[:page], per_page: 7)
-    end
+    @opportunities = build_opportunities_object_from_params(params)
   end
 
   # GET /opportunities/1
