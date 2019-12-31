@@ -1,89 +1,92 @@
-<p id="notice"><%= notice %></p>
+<div class="bg-gray-200 px-64 py-8">
+    <% if notice.present? %>
+      <p class="notice text-blue-500 bg-white shadow py-2 px-4 text-center mt-4 w-1/2 mx-auto"><%= notice %></p>
+    <% end %>
+    <div class="bg-white shadow py-2 px-4 text-center mt-4 w-1/2 mx-auto">
+      <p class="text-blue-600 font-bold">
+        <strong>
+          <%= @resume.student.user.username %> | 
+          Cell: <%= @resume.phone_number %>
+        </strong>
+      </p>
+      <p class="text-xs">
+        <strong>Physical_address: </strong><%= @resume.physical_address %>
+      </p>
+      <p class="text-xs">
+        <strong>Email: </strong><%= @resume.email_adress %>
+      </p>
+      <p class="text-sm text-pink-700 mt-2">
+        <strong>Name:</strong>
+        <%= @resume.student.user.username %>
+      </p>
 
-<p>
-  <strong>Student:</strong>
-  <%= @resume.student_id %>
-</p>
+      <p class="text-gray-600 text-sm tracking-wide my-2">
+        <strong>Profile picture:</strong>
+        <%= @resume.profile_picture %>
+      </p>
 
-<p>
-  <strong>Profile picture:</strong>
-  <%= @resume.profile_picture %>
-</p>
+      <p class="text-gray-600 text-sm tracking-wide my-2">
+        <strong>Full name:</strong>
+        <%= @resume.full_name %>
+      </p>
 
-<p>
-  <strong>Full name:</strong>
-  <%= @resume.full_name %>
-</p>
+      <p class="text-gray-600 text-sm tracking-wide my-2">
+        <strong>Tagline:</strong>
+        <%= @resume.tagline %>
+      </p>
 
-<p>
-  <strong>Tagline:</strong>
-  <%= @resume.tagline %>
-</p>
+      <p class="text-gray-600 text-sm tracking-wide my-2">
+        <strong>Work experience:</strong>
+        <%= @resume.work_experience %>
+      </p>
 
-<p>
-  <strong>Phone number:</strong>
-  <%= @resume.phone_number %>
-</p>
+      <p class="text-gray-600 text-sm tracking-wide my-2">
+        <strong>Education:</strong>
+        <%= @resume.education %>
+      </p>
 
-<p>
-  <strong>Physical address:</strong>
-  <%= @resume.physical_address %>
-</p>
+      <p class="text-gray-600 text-sm tracking-wide my-2">
+        <strong>Certifications:</strong>
+        <%= @resume.certifications %>
+      </p>
 
-<p>
-  <strong>Email adress:</strong>
-  <%= @resume.email_adress %>
-</p>
+      <p class="text-gray-600 text-sm tracking-wide my-2">
+        <strong>Skills:</strong>
+        <%= @resume.skills %>
+      </p>
 
-<p>
-  <strong>Work experience:</strong>
-  <%= @resume.work_experience %>
-</p>
+      <p class="text-gray-600 text-sm tracking-wide my-2">
+        <strong>Languages:</strong>
+        <%= @resume.languages %>
+      </p>
 
-<p>
-  <strong>Education:</strong>
-  <%= @resume.education %>
-</p>
+      <p class="text-gray-600 text-sm tracking-wide my-2">
+        <strong>Past projects:</strong>
+        <%= @resume.past_projects %>
+      </p>
 
-<p>
-  <strong>Certifications:</strong>
-  <%= @resume.certifications %>
-</p>
+      <p class="text-gray-600 text-sm tracking-wide my-2">
+        <strong>Workshops:</strong>
+        <%= @resume.workshops %>
+      </p>
 
-<p>
-  <strong>Skills:</strong>
-  <%= @resume.skills %>
-</p>
+      <p class="text-gray-600 text-sm tracking-wide my-2">
+        <strong>Volunteerships:</strong>
+        <%= @resume.volunteerships %>
+      </p>
 
-<p>
-  <strong>Languages:</strong>
-  <%= @resume.languages %>
-</p>
+      <p class="text-gray-600 text-sm tracking-wide my-2">
+        <strong>Relevant links:</strong>
+        <%= @resume.relevant_links %>
+      </p>
 
-<p>
-  <strong>Past projects:</strong>
-  <%= @resume.past_projects %>
-</p>
+      <p class="text-gray-600 text-sm tracking-wide my-2">
+        <strong>Extra columns:</strong>
+        <%= @resume.extra_columns %>
+      </p>
+    </div>
+    <div class="bg-white shadow py-2 px-4 text-center mt-4 w-1/2 mx-auto">
+      <%= link_to 'Edit resume', edit_resume_path(@resume), class: "text-blue-400 hover:underline" %>
+    </div>
+</div>
 
-<p>
-  <strong>Workshops:</strong>
-  <%= @resume.workshops %>
-</p>
-
-<p>
-  <strong>Volunteerships:</strong>
-  <%= @resume.volunteerships %>
-</p>
-
-<p>
-  <strong>Relevant links:</strong>
-  <%= @resume.relevant_links %>
-</p>
-
-<p>
-  <strong>Extra columns:</strong>
-  <%= @resume.extra_columns %>
-</p>
-
-<%= link_to 'Edit', edit_resume_path(@resume) %> |
-<%= link_to 'Back', resumes_path %>
