@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_11_27_134205) do
+ActiveRecord::Schema.define(version: 2020_01_01_045606) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "hstore"
@@ -50,6 +50,7 @@ ActiveRecord::Schema.define(version: 2019_11_27_134205) do
   create_table "businesses", force: :cascade do |t|
     t.bigint "employer_id", null: false
     t.string "logo"
+    t.string "name"
     t.text "description"
     t.string "location"
     t.datetime "created_at", precision: 6, null: false
@@ -122,6 +123,12 @@ ActiveRecord::Schema.define(version: 2019_11_27_134205) do
     t.index ["student_id"], name: "index_resumes_on_student_id"
   end
 
+  create_table "skills", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
   create_table "students", force: :cascade do |t|
     t.bigint "user_id", null: false
     t.string "institution_name"
@@ -154,10 +161,7 @@ ActiveRecord::Schema.define(version: 2019_11_27_134205) do
     t.string "first_name"
     t.string "middle_name"
     t.string "last_name"
-    t.boolean "admin"
-    t.boolean "moderator"
-    t.boolean "employer"
-    t.boolean "student"
+    t.text "bio"
     t.hstore "settings"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false

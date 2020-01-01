@@ -1,6 +1,6 @@
 class User < ApplicationRecord
   has_secure_password
-  store_accessor :settings, :privacy, :account
+  store_accessor :settings, :privacy, :account_type
 
   has_many :authored_posts, :class_name => 'Post', :foreign_key => 'author_id', dependent: :destroy
   has_one :student, dependent: :destroy

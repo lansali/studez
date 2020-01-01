@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :skills
   get 'info/privacy_policy'
   get 'info/terms_of_service'
   get 'info/security_policy'

@@ -15,28 +15,35 @@
 
 require 'faker'
 opportunity_ids = []
+emails = ["@gmail.com", "@yahoo.com", "@onelive.com", "@me.com", "@tech.com", "@company.com"]
 categories = ['Design', 'IT', 'Engineering', 'Education', 'Business', 'Medicine', 'Agriculture']
 courses_array = ['Masters in Business studies', 'BSc. Comp Sci', 'BSc. Astro', 'BSc. Mathematics', 'BA Pyschology', 'BSc. Engineering', 'Diploma in Further studies', 'Certificate in culinary techniques']
 employer_number = 1
 student_number = 1
 
 81.times do
-    first_name  = Faker::Name.first_name
-    middle_name = Faker::Name.middle_name
-    last_name   = Faker::Name.last_name
+    first_name  = Faker::Name.unique.first_name
+    middle_name = Faker::Name.unique.middle_name
+    last_name   = Faker::Name.unique.last_name
+    email       = first_name.downcase + "." + middle_name.downcase + emails.sample
+    full_name   = first_name + " " + middle_name + " " + last_name
+
     user = User.new(
-        email: Faker::Internet.unique.free_email, 
+        email: email, 
         password: "password", 
         password_confirmation: "password",
-        username: first_name + middle_name + last_name,
+        username: full_name,
         first_name: first_name,
         middle_name: middle_name,
         last_name: last_name,
         settings: {
-            privacy: 'y'
+            privacy: 'y',
+            account_type: 'business'
         }
     )
-    user.save
+    if user.save
+        puts "Saved business account sucessfully"
+    end
 
     employer = Employer.create(
         user_id: user.id,
@@ -47,6 +54,7 @@ student_number = 1
     3.times do
         business = Business.create(
             employer_id: employer.id,
+            name: Faker::Superhero.name,
             logo: Faker::Placeholdit.image(size: '50x50', format: 'jpg', background_color: 'ffffff'),
             description: Faker::TvShows::HowIMetYourMother.quote,
             location: Faker::Nation.capital_city
@@ -72,13 +80,17 @@ student_number = 1
     employer_number = employer_number + 1
 end
 
-25000.times do
-    first_name  = Faker::Name.first_name
-    middle_name = Faker::Name.middle_name
-    last_name   = Faker::Name.last_name
-    full_name   = first_name + middle_name + last_name
+total_students_number = 50
+
+total_students_number.times do
+    first_name  = Faker::Name.unique.first_name
+    middle_name = Faker::Name.unique.middle_name
+    last_name   = Faker::Name.unique.last_name
+    email       = first_name + "." + middle_name + emails.sample
+    full_name   = first_name + " " + middle_name + " " + last_name
+
     user = User.new(
-        email: Faker::Internet.unique.free_email, 
+        email: email, 
         password: "password", 
         password_confirmation: "password",
         username: full_name,
@@ -86,10 +98,13 @@ end
         middle_name: middle_name,
         last_name: last_name,
         settings: {
-            privacy: 'n'
+            privacy: 'n',
+            account_type: 'student'
         }
     )
-    user.save
+    if user.save
+        puts "Saved student account sucessfully"
+    end
 
     student = Student.create(
         user_id: user.id,
@@ -168,7 +183,7 @@ end
                 Namely(New York Based Series D startup).
                 Looking forward to your reply. Kind regards."
         )
-        puts "Student[#{student_number}/25000]: Applying for job #{job_number}/#{jobs_size}"
+        puts "Student[#{student_number}/#{total_students_number}]: Applying for job #{job_number}/#{jobs_size}"
         job_number = job_number + 1
     end
     student_number = student_number + 1
