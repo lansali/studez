@@ -25,6 +25,8 @@ opportunity_ids = []
 emails = ["@gmail.com", "@yahoo.com", "@onelive.com", "@me.com", "@tech.com", "@company.com"]
 categories = ['Design', 'IT', 'Engineering', 'Education', 'Business', 'Medicine', 'Agriculture']
 courses_array = ['Masters in Business studies', 'BSc. Comp Sci', 'BSc. Astro', 'BSc. Mathematics', 'BA Pyschology', 'BSc. Engineering', 'Diploma in Further studies', 'Certificate in culinary techniques']
+salary_ranges = ['KSh. 20k - KSh. 25k', 'KSh. 28k - KSh. 32k', 'KSh. 39k - KSh. 50k', 'KSh. 50k - KSh. 80k', 'KSh. 65k - KSh. 85k', 'KSh. 80k - KSh. 90k', 'KSh. 90k - KSh. 105k']
+opportunity_types = ['Internship', 'Part-time', 'Full-time', 'Remote', 'Contract']
 employer_number = 1
 student_number = 1
 @last_width = 0
@@ -96,6 +98,8 @@ total_employers_number.times do
                 name: Faker::Job.title,
                 description: Faker::TvShows::HowIMetYourMother.quote,
                 location: Faker::Nation.capital_city,
+                opportunity_type: opportunity_types.sample,
+                salary_range: salary_ranges.sample,
                 category: categories[counter],
                 requirements: Faker::TvShows::GameOfThrones.quote,
                 other: Faker::Marketing.buzzwords,

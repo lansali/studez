@@ -83,6 +83,8 @@ ActiveRecord::Schema.define(version: 2020_01_01_045606) do
     t.bigint "business_id", null: false
     t.text "description"
     t.string "location"
+    t.string "opportunity_type"
+    t.string "salary_range"
     t.text "requirements"
     t.text "other"
     t.date "deadline"
