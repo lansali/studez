@@ -13,6 +13,13 @@
 #   Character.create(name: Faker::Name.name, movie: movies.first)
 # password_digest: Faker::Internet.password,
 
+begin
+    require 'io/console/size'
+rescue LoadError
+    # for JRuby
+    require 'io/console'
+end
+
 require 'faker'
 opportunity_ids = []
 emails = ["@gmail.com", "@yahoo.com", "@onelive.com", "@me.com", "@tech.com", "@company.com"]
@@ -20,11 +27,35 @@ categories = ['Design', 'IT', 'Engineering', 'Education', 'Business', 'Medicine'
 courses_array = ['Masters in Business studies', 'BSc. Comp Sci', 'BSc. Astro', 'BSc. Mathematics', 'BA Pyschology', 'BSc. Engineering', 'Diploma in Further studies', 'Certificate in culinary techniques']
 employer_number = 1
 student_number = 1
+@last_width = 0
 
-81.times do
-    first_name  = Faker::Name.unique.first_name
-    middle_name = Faker::Name.unique.middle_name
-    last_name   = Faker::Name.unique.last_name
+def progress(subject, done_so_far, total)
+    progress_bar = sprintf("%3d%% [%2d/%2d]  ",
+                           100 * done_so_far / total,
+                           done_so_far,
+                           total)
+
+    size = IO.respond_to?(:console_size) ? IO.console_size : IO.console.winsize
+    terminal_width = size[1].to_i.nonzero? || 80
+    max_size = terminal_width - progress_bar.size
+
+    line = "#{progress_bar}#{subject}"
+    if $stdout.tty?
+      $stdout.print("\r" + (" " * @last_width) + ("\b" * @last_width) + "\r") if @last_width && @last_width > 0
+      @last_width = line.size
+      $stdout.print("#{line}\r")
+    else
+      $stdout.puts(line)
+    end
+    $stdout.flush
+end
+
+total_employers_number = 81
+
+total_employers_number.times do
+    first_name  = Faker::Name.first_name
+    middle_name = Faker::Name.middle_name
+    last_name   = Faker::Name.last_name
     email       = first_name.downcase + "." + middle_name.downcase + emails.sample
     full_name   = first_name + " " + middle_name + " " + last_name
 
@@ -41,9 +72,7 @@ student_number = 1
             account_type: 'business'
         }
     )
-    if user.save
-        puts "Saved business account sucessfully"
-    end
+    user.save
 
     employer = Employer.create(
         user_id: user.id,
@@ -76,17 +105,18 @@ student_number = 1
             counter = counter + 1
         end
     end
-    puts "Creating employer #{employer_number}/81"
+    # puts "Creating employer #{employer_number}/81"
+    progress('Employers seed data', employer_number, total_employers_number)
     employer_number = employer_number + 1
 end
 
-total_students_number = 50
+total_students_number = total_employers_number * 3
 
 total_students_number.times do
-    first_name  = Faker::Name.unique.first_name
-    middle_name = Faker::Name.unique.middle_name
-    last_name   = Faker::Name.unique.last_name
-    email       = first_name + "." + middle_name + emails.sample
+    first_name  = Faker::Name.first_name
+    middle_name = Faker::Name.middle_name
+    last_name   = Faker::Name.last_name
+    email       = first_name.downcase + "." + middle_name.downcase + emails.sample
     full_name   = first_name + " " + middle_name + " " + last_name
 
     user = User.new(
@@ -102,9 +132,7 @@ total_students_number.times do
             account_type: 'student'
         }
     )
-    if user.save
-        puts "Saved student account sucessfully"
-    end
+    user.save
 
     student = Student.create(
         user_id: user.id,
@@ -123,7 +151,7 @@ total_students_number.times do
         tagline: Faker::TvShows::HowIMetYourMother.quote,
         phone_number: "This is a placeholder",
         physical_address: "This is a placeholder",
-        email_adress: Faker::Internet.unique.free_email,
+        email_adress: Faker::Internet.free_email,
         work_experience: "This is a placeholder",
         education: "This is a placeholder",
         certifications: "This is a placeholder",
@@ -183,7 +211,8 @@ total_students_number.times do
                 Namely(New York Based Series D startup).
                 Looking forward to your reply. Kind regards."
         )
-        puts "Student[#{student_number}/#{total_students_number}]: Applying for job #{job_number}/#{jobs_size}"
+        # puts "Student[#{student_number}/#{total_students_number}]: Applying for job #{job_number}/#{jobs_size}"
+        progress('Student seed data', student_number, total_students_number)
         job_number = job_number + 1
     end
     student_number = student_number + 1

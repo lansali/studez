@@ -11,7 +11,7 @@ Visit `http://localhost:5000/` where the app is live.
 
 ## Resetting the application
 Run:
-- `rake db:drop && rake db:setup`
+- `rails db:drop && rails db:create && rails db:migrate && rails db:setup`
 
 ## Author
 Sylvance Kerandi

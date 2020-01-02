@@ -12,7 +12,7 @@ class User < ApplicationRecord
   validates :privacy, presence: true
   validates :privacy, inclusion: { in: %w(y n) }
   validates :account_type, presence: true
-  validates :account_type, inclusion: { in: %w(admin, moderator, business, student) }
+  validates :account_type, inclusion: { in: %w(admin moderator business student) }
 
   def self.is_public
     where("settings @> hstore(?, ?)",'privacy','n')

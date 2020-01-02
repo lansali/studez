@@ -161,7 +161,6 @@ ActiveRecord::Schema.define(version: 2020_01_01_045606) do
     t.string "first_name"
     t.string "middle_name"
     t.string "last_name"
-    t.text "bio"
     t.hstore "settings"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
