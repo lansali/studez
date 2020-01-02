@@ -1,11 +1,12 @@
 class PostsController < ApplicationController
+  include PostsHelper
   before_action :set_post, only: [:show, :edit, :update, :destroy]
   skip_before_action :authenticate_request, only: [:index, :show]
 
   # GET /posts
   # GET /posts.json
   def index
-    @posts = Post.paginate(page: params[:page], per_page: 7)
+    @posts = build_posts_object_from_params(params)
   end
 
   # GET /posts/1
@@ -71,6 +72,6 @@ class PostsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def post_params
-      params.require(:post).permit(:title, :author_id, :content)
+      params.require(:post).permit(:title, :content).merge({:author_id => current_user.id})
     end
 end

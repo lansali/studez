@@ -26,8 +26,9 @@ class UsersController < ApplicationController
   # POST /users
   # POST /users.json
   def create
-    @user = User.new(user_params)
-    declare_user_type
+    user_account_details = declare_user_type(user_params)
+    @user = User.new(user_account_details)
+    # declare_user_type
 
     respond_to do |format|
       if @user.save
