@@ -1,19 +1,7 @@
 <p class="notice text-blue-500"><%= notice %></p>
 <div class="bg-gray-100 flex pt-12 pl-40 pr-24">
-  <div class="w-1/4  pr-4">
-    <h3 class="tracking-wide mb-4">Search keywords</h3>
-    <input type="text" placeholder="By name" class="shadow appearance-none border rounded w-full py-3 px-3 mb-4 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" />
-    <h3 class="tracking-wide mb-4">Category</h3>
-    <input type="text" placeholder="By categories" class="shadow appearance-none border rounded w-full py-3 px-3 mb-4 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" />
-  </div>
-  <div class="w-3/4">
-    <h3 class="tracking-wide mb-4">Your Selected</h3>
-    <div class="flex bg-gray-300 text-sm mb-4 p-3 rounded">
-      <span class="bg-white text-sm px-2 py-1 mr-2 rounded hover:shadow-lg"><i class="icon-tags"></i> Design</span>
-      <span class="bg-white text-sm px-2 py-1 mr-2 rounded hover:shadow-lg"><i class="icon-tags"></i> UI/UX</span>
-      <span class="text-sm px-2 py-1 mr-2 hover:text-red-500"><i class="icon-trash"></i>Clear All</span>
-    </div>
-    <h3 class="tracking-wide mb-4">You have <%= @submissions.count %> Submission<% if @submissions.count > 1 %>s<% end %></h3>
+  <div class="w-3/4 mx-auto">
+    <h3 class="tracking-wide mb-4">You have <%= @submissions.count %> Submission<% if @submissions.count != 1 %>s<% end %></h3>
     <% @submissions.each do |submission| %>
       <div class="flex bg-white shadow py-8 px-24 rounded-lg mb-4 border-l-4 border-white hover:border-green-500">
         <p class="flex-auto">
