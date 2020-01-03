@@ -85,8 +85,9 @@
         <%= @resume.extra_columns %>
       </p>
     </div>
-    <div class="bg-white shadow py-2 px-4 text-center mt-4 w-1/2 mx-auto">
-      <%= link_to 'Edit resume', edit_resume_path(@resume), class: "text-blue-400 hover:underline" %>
-    </div>
+    <% if current_student.id == @resume.student_id %>
+      <div class="bg-white shadow py-2 px-4 text-center mt-4 w-1/2 mx-auto whitespace-pre">
+        <%= link_to 'Edit resume', edit_resume_path(@resume), class: "text-blue-400 hover:underline" %>  <%= link_to 'Delete resume', @resume, method: :delete, data: { confirm: 'Are you sure?' }, class: "text-red-400 hover:underline" %>
+      </div>
+    <% end %>
 </div>
-

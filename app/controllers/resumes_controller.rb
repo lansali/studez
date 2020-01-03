@@ -4,7 +4,11 @@ class ResumesController < ApplicationController
   # GET /resumes
   # GET /resumes.json
   def index
-    @resumes = Resume.all
+    if params[:my_resume].present? && params[:my_resume] == 'retrieve_resumes'
+      @resumes = Resume.where(student_id: current_student.id).paginate(page: params[:page], per_page: 7)
+    else
+      @resumes = Resume.paginate(page: params[:page], per_page: 7)
+    end
   end
 
   # GET /resumes/1
@@ -69,6 +73,6 @@ class ResumesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def resume_params
-      params.require(:resume).permit(:student_id, :profile_picture, :full_name, :tagline, :phone_number, :physical_address, :email_adress, :work_experience, :education, :certifications, :skills, :languages, :past_projects, :workshops, :volunteerships, :relevant_links, :extra_columns)
+      params.require(:resume).permit(:profile_picture, :full_name, :tagline, :phone_number, :physical_address, :email_adress, :work_experience, :education, :certifications, :skills, :languages, :past_projects, :workshops, :volunteerships, :relevant_links, :extra_columns).merge({:student_id => current_student.id})
     end
 end

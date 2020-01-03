@@ -1,0 +1,154 @@
+<%= form_with(model: submission, class: "bg-white shadow py-4 px-4 text-center w-2/3 mx-auto", local: true) do |form| %>
+  <% if submission.errors.any? %>
+    <div class="">
+      <h2><%= pluralize(submission.errors.count, "error") %> prohibited this submission from being saved:</h2>
+
+      <ul>
+        <% submission.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <h1 class="text-xl font-bold">Apply</h1>
+  <p class="notice text-blue-500"><%= notice %></p>
+
+  <%= form.text_field :opportunity_id, type: 'hidden', value: opportunity_id %>
+  <%= form.text_field :resume_form, type: 'hidden', value: true %>
+
+  <div class="mb-2">
+    <h3 class="font-bold"><%= form.label :write_a_cover_letter %></h3>
+    <%= form.text_area :cover_letter, class: "shadow appearance-none border rounded w-full h-32 py-2 px-2 text-gray-700 leading-tight focus:outline-none focus:shadow-outline",  placeholder: 'Write a Cover letter' %>
+  </div>
+  
+  <h3 class="font-bold"><%= form.label :resume_details %></h3>
+  <p class="text-xs text-green-500 font-italic">(auto-saved for future use)</p>
+
+  <% if resume.errors.any? %>
+    <div class="">
+      <p class="text-sm"><%= pluralize(resume.errors.count, "error") %> prohibited this submission from being saved:</p>
+
+      <ul>
+        <% resume.errors.full_messages.each do |message| %>
+          <li class="text-xs text-red-600"><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="text-gray-600 text-sm tracking-wide my-2">
+    <strong>
+      <%= label :resume, :profile_picture %>
+    </strong>
+    <%= text_field :resume, :profile_picture, class: "shadow appearance-none border rounded w-full py-2 px-2 text-gray-700 leading-tight focus:outline-none focus:shadow-outline", placeholder: 'Placeholder' %>
+  </div>
+
+  <div class="text-gray-600 text-sm tracking-wide my-2">
+    <strong>
+      <%= label :resume, :full_name %>
+    </strong>
+    <%= text_field :resume, :full_name, class: "shadow appearance-none border rounded w-full py-2 px-2 text-gray-700 leading-tight focus:outline-none focus:shadow-outline", placeholder: 'Placeholder' %>
+  </div>
+
+  <div class="text-gray-600 text-sm tracking-wide my-2">
+    <strong>
+      <%= label :resume, :tagline %>
+    </strong>
+    <%= text_field :resume, :tagline, class: "shadow appearance-none border rounded w-full py-2 px-2 text-gray-700 leading-tight focus:outline-none focus:shadow-outline", placeholder: 'Placeholder' %>
+  </div>
+
+  <div class="text-gray-600 text-sm tracking-wide my-2">
+    <strong>
+      <%= label :resume, :phone_number %>
+    </strong>
+    <%= text_field :resume, :phone_number, class: "shadow appearance-none border rounded w-full py-2 px-2 text-gray-700 leading-tight focus:outline-none focus:shadow-outline", placeholder: 'Placeholder' %>
+  </div>
+
+  <div class="text-gray-600 text-sm tracking-wide my-2">
+    <strong>
+      <%= label :resume, :physical_address %>
+    </strong>
+    <%= text_field :resume, :physical_address, class: "shadow appearance-none border rounded w-full py-2 px-2 text-gray-700 leading-tight focus:outline-none focus:shadow-outline", placeholder: 'Placeholder' %>
+  </div>
+
+  <div class="text-gray-600 text-sm tracking-wide my-2">
+    <strong>
+      <%= label :resume, :email_adress %>
+    </strong>
+    <%= text_field :resume, :email_adress, class: "shadow appearance-none border rounded w-full py-2 px-2 text-gray-700 leading-tight focus:outline-none focus:shadow-outline", placeholder: 'Placeholder' %>
+  </div>
+
+  <div class="text-gray-600 text-sm tracking-wide my-2">
+    <strong>
+      <%= label :resume, :work_experience %>
+    </strong>
+    <%= text_field :resume, :work_experience, class: "shadow appearance-none border rounded w-full py-2 px-2 text-gray-700 leading-tight focus:outline-none focus:shadow-outline", placeholder: 'Placeholder' %>
+  </div>
+
+  <div class="text-gray-600 text-sm tracking-wide my-2">
+    <strong>
+      <%= label :resume, :education %>
+    </strong>
+    <%= text_field :resume, :education, class: "shadow appearance-none border rounded w-full py-2 px-2 text-gray-700 leading-tight focus:outline-none focus:shadow-outline", placeholder: 'Placeholder' %>
+  </div>
+
+  <div class="text-gray-600 text-sm tracking-wide my-2">
+    <strong>
+      <%= label :resume, :certifications %>
+    </strong>
+    <%= text_field :resume, :certifications, class: "shadow appearance-none border rounded w-full py-2 px-2 text-gray-700 leading-tight focus:outline-none focus:shadow-outline", placeholder: 'Placeholder' %>
+  </div>
+
+  <div class="text-gray-600 text-sm tracking-wide my-2">
+    <strong>
+      <%= label :resume, :skills %>
+    </strong>
+    <%= text_field :resume, :skills, class: "shadow appearance-none border rounded w-full py-2 px-2 text-gray-700 leading-tight focus:outline-none focus:shadow-outline", placeholder: 'Placeholder' %>
+  </div>
+
+  <div class="text-gray-600 text-sm tracking-wide my-2">
+    <strong>
+      <%= label :resume, :languages %>
+    </strong>
+    <%= text_field :resume, :languages, class: "shadow appearance-none border rounded w-full py-2 px-2 text-gray-700 leading-tight focus:outline-none focus:shadow-outline", placeholder: 'Placeholder' %>
+  </div>
+
+  <div class="text-gray-600 text-sm tracking-wide my-2">
+    <strong>
+      <%= label :resume, :past_projects %>
+    </strong>
+    <%= text_field :resume, :past_projects, class: "shadow appearance-none border rounded w-full py-2 px-2 text-gray-700 leading-tight focus:outline-none focus:shadow-outline", placeholder: 'Placeholder' %>
+  </div>
+
+  <div class="text-gray-600 text-sm tracking-wide my-2">
+    <strong>
+      <%= label :resume, :workshops %>
+    </strong>
+    <%= text_field :resume, :workshops, class: "shadow appearance-none border rounded w-full py-2 px-2 text-gray-700 leading-tight focus:outline-none focus:shadow-outline", placeholder: 'Placeholder' %>
+  </div>
+
+  <div class="text-gray-600 text-sm tracking-wide my-2">
+    <strong>
+      <%= label :resume, :volunteerships %>
+    </strong>
+    <%= text_field :resume, :volunteerships, class: "shadow appearance-none border rounded w-full py-2 px-2 text-gray-700 leading-tight focus:outline-none focus:shadow-outline", placeholder: 'Placeholder' %>
+  </div>
+
+  <div class="text-gray-600 text-sm tracking-wide my-2">
+    <strong>
+      <%= label :resume, :relevant_links %>
+    </strong>
+    <%= text_field :resume, :relevant_links, class: "shadow appearance-none border rounded w-full py-2 px-2 text-gray-700 leading-tight focus:outline-none focus:shadow-outline", placeholder: 'Placeholder' %>
+  </div>
+
+  <div class="text-gray-600 text-sm tracking-wide my-2">
+    <strong>
+      <%= label :resume, :extra_columns %>
+    </strong>
+    <%= text_field :resume, :extra_columns, class: "shadow appearance-none border rounded w-full py-2 px-2 text-gray-700 leading-tight focus:outline-none focus:shadow-outline", placeholder: 'Placeholder' %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit 'Submit', class: "mb-4 bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"%>
+  </div>
+<% end %>

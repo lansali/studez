@@ -1,59 +1,27 @@
-<p id="notice"><%= notice %></p>
-
-<h1>Resumes</h1>
-
-<table>
-  <thead>
-    <tr>
-      <th>Student</th>
-      <th>Profile picture</th>
-      <th>Full name</th>
-      <th>Tagline</th>
-      <th>Phone number</th>
-      <th>Physical address</th>
-      <th>Email adress</th>
-      <th>Work experience</th>
-      <th>Education</th>
-      <th>Certifications</th>
-      <th>Skills</th>
-      <th>Languages</th>
-      <th>Past projects</th>
-      <th>Workshops</th>
-      <th>Volunteerships</th>
-      <th>Relevant links</th>
-      <th>Extra columns</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @resumes.each do |resume| %>
-      <tr>
-        <td><%= resume.student_id %></td>
-        <td><%= resume.profile_picture %></td>
-        <td><%= resume.full_name %></td>
-        <td><%= resume.tagline %></td>
-        <td><%= resume.phone_number %></td>
-        <td><%= resume.physical_address %></td>
-        <td><%= resume.email_adress %></td>
-        <td><%= resume.work_experience %></td>
-        <td><%= resume.education %></td>
-        <td><%= resume.certifications %></td>
-        <td><%= resume.skills %></td>
-        <td><%= resume.languages %></td>
-        <td><%= resume.past_projects %></td>
-        <td><%= resume.workshops %></td>
-        <td><%= resume.volunteerships %></td>
-        <td><%= resume.relevant_links %></td>
-        <td><%= resume.extra_columns %></td>
-        <td><%= link_to 'Show', resume %></td>
-        <td><%= link_to 'Edit', edit_resume_path(resume) %></td>
-        <td><%= link_to 'Destroy', resume, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
+<p class="notice text-blue-500"><%= notice %></p>
+<div class="bg-gray-100 flex pt-12 pl-40 pr-24">
+  <div class="w-3/4 mx-auto">
+    <h3 class="tracking-wide mb-4">You have <%= @resumes.count %> Resume<% if @resumes.count != 1 %>s<% end %></h3>
+    <% if @resumes.count < 1 %>
+      <%= link_to 'Create a New Resume', new_resume_path, class: "bg-white border-2 border-blue-500 hover:bg-blue-500 text-blue-500 hover:text-white font-bold py-2 px-4 rounded" %>
+    <% else %>
+      <% @resumes.each do |resume| %>
+        <div class="flex bg-white shadow py-8 px-24 rounded-lg mb-4 border-l-4 border-white hover:border-green-500">
+          <div class="flex-auto">
+            <p class="text-green-600 font-medium">Current Resume</p>
+            <p class="font-medium"><%= resume.full_name %></p>
+            <p class="text-gray-600 text-sm whitespace-pre"><%= resume.email_adress %>    <%= resume.phone_number %></p>
+          </div>
+          <div class="flex-auto flex items-center justify-end">
+            <%= link_to 'View', resume, class: "bg-white border-2 border-green-500 hover:bg-green-500 text-green-500 hover:text-white font-bold py-2 px-4 rounded" %>
+            <% if current_student.id == resume.student_id %>
+              <%= link_to 'Edit', edit_resume_path(resume), class: "ml-2 bg-white border-2 border-blue-500 hover:bg-blue-500 text-blue-500 hover:text-white font-bold py-2 px-4 rounded" %>
+              <%= link_to 'Delete', resume, method: :delete, data: { confirm: 'Are you sure?' }, class: "ml-2 bg-white border-2 border-red-500 hover:bg-red-500 text-red-500 hover:text-white font-bold py-2 px-4 rounded" %>
+            <% end %>
+          </div>
+        </div>
+      <% end %>
+      <%= will_paginate @resumes %>
     <% end %>
-  </tbody>
-</table>
-
-<br>
-
-<%= link_to 'New Resume', new_resume_path %>
+  </div>
+</div>

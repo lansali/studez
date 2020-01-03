@@ -138,7 +138,11 @@
       <%= form.submit %>
     </div>
   <% end %>
-  <div class="bg-white shadow py-2 px-4 text-center mt-4 w-1/2 mx-auto">
-    <%= link_to 'View resume', resume_path(resume), class: "text-blue-400 hover:underline" %>
-  </div>
+  <% if resume.id != nil %>
+    <% if is_current_path?(edit_resume_path(resume.id)) %>
+      <div class="bg-white shadow py-2 px-4 text-center mt-4 w-1/2 mx-auto">
+        <%= link_to 'View resume', resume_path(resume.id), class: "text-blue-400 hover:underline" %>
+      </div>
+    <% end %>
+  <% end %>
 </div>

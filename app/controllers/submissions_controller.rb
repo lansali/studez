@@ -1,4 +1,7 @@
+require "ostruct"
+
 class SubmissionsController < ApplicationController
+  include SubmissionsHelper
   before_action :set_submission, only: [:show, :edit, :update, :destroy]
 
   # GET /submissions
@@ -21,8 +24,9 @@ class SubmissionsController < ApplicationController
   # GET /submissions/new
   def new
     @opportunity_id = params[:opportunity_id]
-    @student_id = params[:student_id]
-    @resume_id = Resume.where(student_id: params[:student_id]).first.id
+    @erroed_resume_object = nil
+    @resume_id = nil
+    @resume_id = Resume.where(student_id: current_student.id).first.id unless lacks_resume?(current_student.id)
     @submission = Submission.new
   end
 
@@ -33,15 +37,22 @@ class SubmissionsController < ApplicationController
   # POST /submissions
   # POST /submissions.json
   def create
+    bool_flag = params[:submission][:resume_form] == true.to_s
+    result = save_associated_resume(resume_params) if bool_flag 
     @submission = Submission.new(submission_params)
+    @submission.resume_id = result.resume.id if bool_flag
 
     respond_to do |format|
-      if @submission.save
-        format.html { redirect_to @submission, notice: 'Submission was successfully created.' }
-        format.json { render :show, status: :created, location: @submission }
+      if bool_flag && result.has_errors
+        render_errored_result(result, format)
       else
-        format.html { render :new }
-        format.json { render json: @submission.errors, status: :unprocessable_entity }
+        if @submission.save
+          format.html { redirect_to @submission, notice: 'Submission was successfully created.' }
+          format.json { render :show, status: :created, location: @submission }
+        else
+          format.html { render :new }
+          format.json { render json: @submission.errors, status: :unprocessable_entity }
+        end
       end
     end
   end
@@ -70,6 +81,14 @@ class SubmissionsController < ApplicationController
     end
   end
 
+  def render_errored_result(result, format)
+    @resume_id = nil
+    @erroed_resume_object = result.resume
+    @opportunity_id = params[:submission][:opportunity_id]
+    format.html { render :new }
+    format.json { render json: @submission.errors, status: :unprocessable_entity }
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_submission
@@ -78,6 +97,10 @@ class SubmissionsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def submission_params
-      params.require(:submission).permit(:opportunity_id, :student_id, :resume_id, :cover_letter)
+      params.require(:submission).permit(:opportunity_id, :resume_id, :cover_letter).merge({:student_id => current_student.id})
+    end
+
+    def resume_params
+      params.require(:resume).permit(:profile_picture, :full_name, :tagline, :phone_number, :physical_address, :email_adress, :work_experience, :education, :certifications, :skills, :languages, :past_projects, :workshops, :volunteerships, :relevant_links, :extra_columns).merge({:student_id => current_student.id})
     end
 end
