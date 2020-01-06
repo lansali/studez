@@ -11,14 +11,14 @@
         </strong>
       </p>
       <p class="text-xs">
-        <strong>Posted by: </strong><%= @submission.opportunity.business.employer.user.username %>
+        <strong>Posted by: </strong><%= @submission.opportunity_business_username %>
       </p>
       <p class="text-xs">
-        <strong>Location: </strong><%= @submission.opportunity.location %>
+        <strong>Location: </strong><%= @submission.opportunity_location %>
       </p>
       <p class="text-sm text-pink-700 mt-2">
         <strong>Applicant:</strong>
-        <%= @submission.student.user.username %>
+        <%= @submission.student_username %>
       </p>
 
       <p class="text-gray-600 text-sm tracking-wide whitespace-pre my-2">

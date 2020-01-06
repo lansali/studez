@@ -30,7 +30,7 @@
         <div class="flex-auto flex items-center justify-end">
           <%= link_to 'View', opportunity, class: "bg-white border text-sm border-green-500 hover:bg-green-500 text-green-500 hover:text-white py-2 px-4 rounded" %>
           <% if logged_in? %>
-            <% if current_user.id == opportunity.business.employer.user.id %>
+            <% if current_user.id == opportunity.business_user_id %>
               <%= link_to 'Edit', edit_opportunity_path(opportunity), class: "ml-2 bg-white border text-sm border-blue-500 hover:bg-blue-500 text-blue-500 hover:text-white py-2 px-4 rounded" %>
               <%= link_to 'Destroy', opportunity, method: :delete, data: { confirm: 'Are you sure?' }, class: "ml-2 bg-white border text-sm border-red-500 hover:bg-red-500 text-red-500 hover:text-white py-2 px-4 rounded" %>
             <% end %>

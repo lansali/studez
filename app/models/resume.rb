@@ -7,4 +7,7 @@ class Resume < ApplicationRecord
   validates :email_adress, presence: true
   validates :work_experience, presence: true
   validates :education, presence: true
+
+  delegate :username,
+           :to => :student, :prefix => true
 end
