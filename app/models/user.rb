@@ -1,4 +1,6 @@
 class User < ApplicationRecord
+  extend UserAssociatedLifecycle
+
   has_secure_password
   store_accessor :settings, :privacy, :account_type
 
@@ -14,6 +16,8 @@ class User < ApplicationRecord
   validates :privacy, inclusion: { in: %w(y n) }
   validates :account_type, presence: true
   validates :account_type, inclusion: { in: %w(admin moderator business student) }
+
+  after_create :save_associatied_account(self.settings[:account_type], self.id)
 
   def self.is_public
     where("settings @> hstore(?, ?)",'privacy','n')

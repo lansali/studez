@@ -26,13 +26,11 @@ class UsersController < ApplicationController
   # POST /users
   # POST /users.json
   def create
-    user_account_details = declare_user_type(user_params)
-    @user = User.new(user_account_details)
-    # declare_user_type
+    account_info = build_user_params(user_params, params[:user][:user_type])
+    @user = User.new(account_info)
 
     respond_to do |format|
       if @user.save
-        save_associatied_objects
         format.html { redirect_to @user, notice: 'User was successfully created.' }
         format.json { render :show, status: :created, location: @user }
       else
@@ -70,10 +68,6 @@ class UsersController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_user
       @user = User.find(params[:id])
-    end
-
-    def user_type
-      params[:user][:user_type]
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
