@@ -17,7 +17,12 @@ class User < ApplicationRecord
   validates :account_type, presence: true
   validates :account_type, inclusion: { in: %w(admin moderator business student) }
 
-  after_create :save_associatied_account(self.settings[:account_type], self.id)
+  after_create :save_associations
 
   scope :is_public, where("settings @> hstore(?, ?)",'privacy','n')
+
+  private
+    def save_associations
+      save_associatied_account(self.settings[:account_type], self.id)
+    end
 end
