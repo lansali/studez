@@ -3,5 +3,5 @@ class Employer < ApplicationRecord
   has_many :businesses, dependent: :destroy
 
   delegate :username,
-           :to => :employer
+           :to => :user
 end

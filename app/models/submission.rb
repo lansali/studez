@@ -9,4 +9,12 @@ class Submission < ApplicationRecord
 
   delegate :user_id,
            :to => :student, :prefix => true
+
+  def self.for_target_student(params)
+    where(student_id: params[:target_student]).paginate(page: params[:page], per_page: 7)
+  end
+
+  def self.for_target_job(params)
+    where(opportunity_id: params[:target_job]).paginate(page: params[:page], per_page: 7)
+  end
 end

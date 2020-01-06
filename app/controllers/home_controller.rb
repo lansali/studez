@@ -10,7 +10,7 @@ class HomeController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_homepage_data
-      distinct_categories = Opportunity.select(:category).distinct.pluck(:category)
+      distinct_categories = Opportunity.get_distinct_categories
       open_positions_array = []
       featured_jobs_array_struct = []
 
@@ -44,11 +44,11 @@ class HomeController < ApplicationController
     end
 
     def build_job_by_location_array_struct
-      distinct_locations = Opportunity.select(:location).distinct.pluck(:location)
+      distinct_locations = Opportunity.get_distinct_locations
       open_positions_in_location_array = []
 
       job_by_location_array_struct = distinct_locations.map do |location|
-        open_positions_in_location_count = Opportunity.where(location: location).count
+        open_positions_in_location_count = Opportunity.get_count_by_location(location)
         open_positions_in_location_array << open_positions_in_location_count
         OpenStruct.new(
           :location => location,

@@ -8,9 +8,9 @@ class SubmissionsController < ApplicationController
   # GET /submissions.json
   def index
     if params[:target_student].present?
-      @submissions = Submission.where(student_id: params[:target_student]).paginate(page: params[:page], per_page: 7)  
+      @submissions = Submission.for_target_student(params)
     elsif params[:target_job].present?
-      @submissions = Submission.where(opportunity_id: params[:target_job]).paginate(page: params[:page], per_page: 7)  
+      @submissions = Submission.for_target_job(params)
     else
       @submissions = Submission.paginate(page: params[:page], per_page: 7)
     end

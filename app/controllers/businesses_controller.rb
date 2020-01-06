@@ -5,7 +5,7 @@ class BusinessesController < ApplicationController
   # GET /businesses.json
   def index
     if params[:target_employer].present?
-      @businesses = Business.where(employer_id: params[:target_employer]).paginate(page: params[:page], per_page: 7)
+      @businesses = Business.for_target_employer(params)
     else
       @businesses = Business.paginate(page: params[:page], per_page: 7)
     end
