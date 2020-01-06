@@ -5,8 +5,9 @@ class Business < ApplicationRecord
   delegate :user_id,
            :username,
            :to => :employer
-
-  def self.for_target_employer(params)
-    where(employer_id: params[:target_employer]).paginate(page: params[:page], per_page: 7)
+           
+  scope :for_target_employer, lambda do |params|
+    where(employer_id: params[:target_employer])
   end
+  scope :top, lambda {|l| limit(l) }
 end

@@ -19,7 +19,5 @@ class User < ApplicationRecord
 
   after_create :save_associatied_account(self.settings[:account_type], self.id)
 
-  def self.is_public
-    where("settings @> hstore(?, ?)",'privacy','n')
-  end
+  scope :is_public, where("settings @> hstore(?, ?)",'privacy','n')
 end
