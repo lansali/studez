@@ -9,7 +9,7 @@ RSpec.describe "resumes/show", type: :view do
       :tagline => "Tagline",
       :phone_number => "Phone Number",
       :physical_address => "Physical Address",
-      :email_adress => "Email Adress",
+      :email_address => "Email Adress",
       :work_experience => "Work Experience",
       :education => "Education",
       :certifications => "Certifications",

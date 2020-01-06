@@ -9,7 +9,7 @@ RSpec.describe "resumes/edit", type: :view do
       :tagline => "MyString",
       :phone_number => "MyString",
       :physical_address => "MyString",
-      :email_adress => "MyString",
+      :email_address => "MyString",
       :work_experience => "MyString",
       :education => "MyString",
       :certifications => "MyString",
@@ -40,7 +40,7 @@ RSpec.describe "resumes/edit", type: :view do
 
       assert_select "input[name=?]", "resume[physical_address]"
 
-      assert_select "input[name=?]", "resume[email_adress]"
+      assert_select "input[name=?]", "resume[email_address]"
 
       assert_select "input[name=?]", "resume[work_experience]"
 

@@ -109,7 +109,7 @@ ActiveRecord::Schema.define(version: 2020_01_01_045606) do
     t.string "tagline"
     t.string "phone_number"
     t.string "physical_address"
-    t.string "email_adress"
+    t.string "email_address"
     t.string "work_experience"
     t.string "education"
     t.string "certifications"

@@ -4,7 +4,7 @@ class Resume < ApplicationRecord
 
   validates :full_name, presence: true
   validates :phone_number, presence: true
-  validates :email_adress, presence: true
+  validates :email_address, presence: true
   validates :work_experience, presence: true
   validates :education, presence: true
 

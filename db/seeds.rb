@@ -128,7 +128,7 @@ total_students_number.times do
         tagline: Faker::TvShows::HowIMetYourMother.quote,
         phone_number: "This is a placeholder",
         physical_address: "This is a placeholder",
-        email_adress: Faker::Internet.free_email,
+        email_address: Faker::Internet.free_email,
         work_experience: "This is a placeholder",
         education: "This is a placeholder",
         certifications: "This is a placeholder",

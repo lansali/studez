@@ -73,6 +73,6 @@ class ResumesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def resume_params
-      params.require(:resume).permit(:profile_picture, :full_name, :tagline, :phone_number, :physical_address, :email_adress, :work_experience, :education, :certifications, :skills, :languages, :past_projects, :workshops, :volunteerships, :relevant_links, :extra_columns).merge({:student_id => current_student.id})
+      params.require(:resume).permit(:profile_picture, :full_name, :tagline, :phone_number, :physical_address, :email_address, :work_experience, :education, :certifications, :skills, :languages, :past_projects, :workshops, :volunteerships, :relevant_links, :extra_columns).merge({:student_id => current_student.id})
     end
 end
