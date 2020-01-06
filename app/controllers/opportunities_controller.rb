@@ -6,7 +6,6 @@ class OpportunitiesController < ApplicationController
   # GET /opportunities
   # GET /opportunities.json
   def index
-    @selected_tags = []
     @opportunities = build_opportunities_object_from_params(params)
   end
 

@@ -5,7 +5,7 @@ class ResumesController < ApplicationController
   # GET /resumes.json
   def index
     if params[:my_resume].present? && params[:my_resume] == 'retrieve_resumes'
-      @resumes = Resume.where(student_id: current_student.id).paginate(page: params[:page], per_page: 7)
+      @resumes = Resume.for_student(current_student.id).paginate(page: params[:page], per_page: 7)
     else
       @resumes = Resume.paginate(page: params[:page], per_page: 7)
     end
