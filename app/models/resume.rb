@@ -10,5 +10,8 @@ class Resume < ApplicationRecord
 
   delegate :username,
            :to => :student, :prefix => true
-  scope :for_student, lambda { |id| where(student_id: id) }
+
+  def self.for_student(id)
+    where(student_id: id)
+  end
 end

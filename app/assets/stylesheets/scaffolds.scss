@@ -26,3 +26,19 @@
 .previous_page:hover, .next_page:hover {
     @apply underline;
 }
+
+.lean{
+
+}
+
+.lean_card{
+    @apply flex shadow mt-2 py-8 px-8 bg-white rounded-lg ml-2 pl-2;
+}
+
+.centre{
+    @apply mx-auto w-1/2;
+}
+
+.container{
+    @apply w-full;
+}

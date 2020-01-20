@@ -60,10 +60,9 @@
       <%= link_to 'Back to all my posted jobs', opportunities_path(target_employer: current_employer.id), class: "mb-4 underline" %>
     <% end %>
   <% else %>
-    <div class="bg-white my-32 hover:shadow-lg rounded text-center w-1/2 mx-auto">
-      <div class="h-4" style="background-image: linear-gradient(-90deg, #eee444, #ccc222);"></div>
-      <p class="py-12 px-8 font-bold text-blue-600">Please switch to an employer account to post a job</p>
-      <div class="h-4" style="background-image: linear-gradient(-90deg, #ccc222, #eee444);"></div>
+    <div class="bg-white my-32 p-8 hover:shadow-lg rounded centre text-center">
+      <h1 class="font-bold text-6xl text-center text-gray-600">Access denied</h1>
+      <p class="tracking-wide text-center text-teal-600">Log out to switch to an employer account to post a job</p>
     </div>
   <% end %>
 </div>

@@ -1,10 +1,14 @@
 Rails.application.routes.draw do
+  get 'error/error'
+  get 'error/access_denied'
+  get 'error/unauthorized'
+  get 'error/not_found'
+  get 'error/server_error'
   resources :skills
   get 'info/privacy_policy'
   get 'info/terms_of_service'
   get 'info/security_policy'
   resources :resumes
-  resources :comments
   resources :submissions
   resources :businesses
   resources :employers
