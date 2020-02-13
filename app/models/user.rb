@@ -11,7 +11,7 @@ class User < ApplicationRecord
 
   validates :email, presence: true, uniqueness: true
   validates :username, presence: true, uniqueness: true
-  validates_presence_of :password_confirmation, if: :password_changed?
+  validates_presence_of :password_confirmation, if: :password_digest_changed?
   validates :privacy, presence: true
   validates :privacy, inclusion: { in: %w(y n) }
   validates :account_type, presence: true

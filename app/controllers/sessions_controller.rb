@@ -5,14 +5,12 @@ class SessionsController < ApplicationController
   end
 
   def create
-    user = User.find_by_email(params[:email])
-    if user && user.authenticate(params[:password])
-      session[:user_id] = user.id
-      redirect_to root_url, notice: "Logged in!"
-    else
-      flash.now[:alert] = "Email or password is invalid"
-      redirect_to login_path, notice: "Email or password is invalid"
-    end
+    result = UserSession.call(email: params[:email], password: params[:password])
+
+    return redirect_to login_url, notice: result.error if result.failure?
+
+    session[:user_id] = result.authenticated_user.id
+    redirect_to root_url, notice: result.message
   end
 
   def destroy

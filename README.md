@@ -13,6 +13,9 @@ Visit `http://localhost:5000/` where the app is live.
 Run:
 - `rails db:drop && rails db:create && rails db:migrate && rails db:setup`
 
+# Tailing foreman
+- `tail -f log/development.log`
+
 ## Author
 Sylvance Kerandi
 
