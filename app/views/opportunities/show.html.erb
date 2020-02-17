@@ -36,7 +36,7 @@
         <% if current_student.present? %>
           <%= link_to 'Apply', new_submission_path(opportunity_id: @opportunity.id), class: "mb-4 bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" %>
         <% else %>
-          <%= link_to 'Login to Apply', login_path, class: "mb-4 bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" %>
+          <%= link_to 'Login as student to Apply', login_path, class: "mb-4 bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" %>
         <% end %>
         <% if current_employer.present? %>
           <% if current_employer.businesses.ids.include?(@opportunity.business_id) %>

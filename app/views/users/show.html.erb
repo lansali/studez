@@ -27,7 +27,9 @@
 					<% end %>
 				</p>
 			<% end %>
-			<p class="pt-8 text-sm"><%= @user.student.bio %></p>
+			<% if current_student.present? %>
+				<p class="pt-8 text-sm"><%= @user.student.bio %></p>
+			<% end %>
 
 			<div class="pt-12 pb-8">
 				<% if current_user.id == @user.id %>
