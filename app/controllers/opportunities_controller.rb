@@ -3,29 +3,21 @@ class OpportunitiesController < ApplicationController
   before_action :set_opportunity, only: [:show, :edit, :update, :destroy]
   skip_before_action :authenticate_request, only: [:index, :show]
 
-  # GET /opportunities
-  # GET /opportunities.json
   def index
     @opportunities = build_opportunities_object_from_params(params)
   end
 
-  # GET /opportunities/1
-  # GET /opportunities/1.json
   def show
   end
 
-  # GET /opportunities/new
   def new
     @business_id = params[:business_id]
     @opportunity = Opportunity.new
   end
 
-  # GET /opportunities/1/edit
   def edit
   end
 
-  # POST /opportunities
-  # POST /opportunities.json
   def create
     @opportunity = Opportunity.new(opportunity_params)
 
@@ -40,8 +32,6 @@ class OpportunitiesController < ApplicationController
     end
   end
 
-  # PATCH/PUT /opportunities/1
-  # PATCH/PUT /opportunities/1.json
   def update
     respond_to do |format|
       if @opportunity.update(opportunity_params)
@@ -54,8 +44,6 @@ class OpportunitiesController < ApplicationController
     end
   end
 
-  # DELETE /opportunities/1
-  # DELETE /opportunities/1.json
   def destroy
     @opportunity.destroy
     respond_to do |format|
@@ -65,12 +53,10 @@ class OpportunitiesController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
     def set_opportunity
       @opportunity = Opportunity.find(params[:id])
     end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
     def opportunity_params
       params.require(:opportunity).permit(:name, :business_id, :description, :location, :requirements, :other, :deadline, :category)
     end

@@ -4,8 +4,6 @@ class SubmissionsController < ApplicationController
   include SubmissionsHelper
   before_action :set_submission, only: [:show, :edit, :update, :destroy]
 
-  # GET /submissions
-  # GET /submissions.json
   def index
     if params[:target_student].present?
       @submissions = Submission.for_target_student(params)
@@ -16,12 +14,9 @@ class SubmissionsController < ApplicationController
     end
   end
 
-  # GET /submissions/1
-  # GET /submissions/1.json
   def show
   end
 
-  # GET /submissions/new
   def new
     @opportunity_id = params[:opportunity_id]
     @erroed_resume_object = nil
@@ -30,12 +25,9 @@ class SubmissionsController < ApplicationController
     @submission = Submission.new
   end
 
-  # GET /submissions/1/edit
   def edit
   end
 
-  # POST /submissions
-  # POST /submissions.json
   def create
     bool_flag = params[:submission][:resume_form] == true.to_s
     result = save_associated_resume(resume_params) if bool_flag 
@@ -57,8 +49,6 @@ class SubmissionsController < ApplicationController
     end
   end
 
-  # PATCH/PUT /submissions/1
-  # PATCH/PUT /submissions/1.json
   def update
     respond_to do |format|
       if @submission.update(submission_params)
@@ -71,8 +61,6 @@ class SubmissionsController < ApplicationController
     end
   end
 
-  # DELETE /submissions/1
-  # DELETE /submissions/1.json
   def destroy
     @submission.destroy
     respond_to do |format|
@@ -90,12 +78,10 @@ class SubmissionsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
     def set_submission
       @submission = Submission.find(params[:id])
     end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
     def submission_params
       params.require(:submission).permit(:opportunity_id, :resume_id, :cover_letter).merge({:student_id => current_student.id})
     end
